@@ -4,22 +4,23 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import SignUp from './components/SignUp';
+import MyNotLoggedInNavBar from './components/MyNotLoggedInNavBar';
 import ListingContainer from './containers/ListingContainer';
-import NavBar from './components/NavBar';
-import LogIn from './components/LogIn'
+import UserContainer from './containers/UserContainer';
 
 class App extends Component {
   
   render() {
     return (
       <Router>
-        <NavBar />
+        <MyNotLoggedInNavBar />
      
         <Switch>
           <Route exact path = "/" component = {ListingContainer} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/login" component={LogIn} />
+          <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
+          <Route exact path="/login" component= {UserContainer} />
+          <Route exact path="/myprofile" component={UserContainer} />
+
         </Switch>
       </Router>
     );
