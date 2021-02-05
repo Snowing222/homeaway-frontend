@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {fetchListings} from '../actions/fetchListings'
 
 class ListingSearch extends Component {
     constructor(){
@@ -24,11 +26,7 @@ class ListingSearch extends Component {
         this.props.fetchListings(queryString)
     }
 
-    
-
-    
-
-           
+        
     render() {
         return (
             <div>
@@ -48,4 +46,4 @@ class ListingSearch extends Component {
     }
 }
 
-export default ListingSearch;
+export default connect(null, {fetchListings})(ListingSearch);
