@@ -1,5 +1,6 @@
 import React from 'react'
 import Listing from './Listing'
+import {connect} from 'react-redux';
 
 const Listings = ({listings}) => {
     if(listings.length!==0){
@@ -15,11 +16,11 @@ const Listings = ({listings}) => {
             <p>"No match Listings"</p>
         )
     }
-    
+ 
     
 }
 
 
-export default Listings
+export default connect(state=>({listings: state.listings}))(Listings)
 
  

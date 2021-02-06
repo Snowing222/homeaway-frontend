@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-const MyLoggedInNavBar = () => {
+const MyNotLoggedInNavBar = () => {
   return (
     <div className="navbar">
       <NavLink to="/">Home</NavLink><span>&nbsp;&nbsp;</span>
@@ -11,4 +11,4 @@ const MyLoggedInNavBar = () => {
 };
 
     
-export default MyLoggedInNavBar;
+export default MyNotLoggedInNavBar;

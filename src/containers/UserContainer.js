@@ -1,39 +1,39 @@
 import React, { Component } from 'react';
 import SignUp from '../components/SignUp';
-import LogIn from '../components/LogIn'
+import LogIn from '../components/LogIn';
+import {connect} from 'react-redux';
+import MyProfileContainer from './MyProfileContainer'
+
 
 class UserContainer extends Component {
-    // constructor(){
-    //     super()
-    //     this.state = {
-    //         currentUser: null,
-    //         signUpForm: {
-    //             name: "",
-    //             email: "",
-    //             password: "",
-
-    //         }
-    // }
-
-    // handleSignUpSubmit = () => {
-
-    // }
-
-    // handleChange = (e) => {
-    //     const {name, value} = e.target
-    //     this.setState({
-    //         currentUser: {...currentUser, [name]: value}
-    //     }  
-    //     )
-    // }
+    renderProperContent = () => {
+        let path = this.props.match.path
+        if(this.props.loggedIn){
+            return <MyProfileContainer />
+        }else if(path === '/signup'){
+            return <SignUp />
+        }else{
+            return <LogIn />
+        }
+    }
   
     render() {
         return (
             <div>
-                <SignUp handleChange = {this.handleChange}/>
+               {this.renderProperContent()}
             </div>
+            
         );
+    }
+
+    
+}
+
+const mapStateToProps = state =>{
+    return {
+        user: state.user.user,
+        loggedIn: state.user.login
     }
 }
 
-export default UserContainer;
+export default connect(mapStateToProps)(UserContainer);

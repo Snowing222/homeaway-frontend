@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {createUser} from '../actions/fetchUser'
+import {createUser} from '../actions/fetchUser';
+import {connect} from 'react-redux'
 
 class SignUp extends Component {
     constructor(){
@@ -11,9 +12,6 @@ class SignUp extends Component {
         }
     }
 
-    handleSignUpSubmit = () => {
-
-    }
 
     handleChange = (e) => {
         const {name, value} = e.target
@@ -26,7 +24,12 @@ class SignUp extends Component {
     handleSignUpSubmit = (e) =>{
         e.preventDefault()
         let userObj = this.state
-        createUser(userObj)
+        this.props.createUser(userObj)
+        this.setState({
+            name: "",
+            email: "",
+            password: ""
+        })
     }
 
 
@@ -55,4 +58,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+export default connect(null, {createUser})(SignUp);

@@ -1,13 +1,89 @@
-export const createUser = (userObj) => {
-      let configObj = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({user: userObj})}
+// import { useHistory } from "react-router-dom"
+
+  
+export function createUser(userObj){
+   
+    
+    return dispatch => {
+    
+       
+        let configObj = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({user: userObj})}
+    
+        return fetch('http://localhost:3001/api/v1/users', configObj)
+        .then(resp => resp.json())
+        .then( data => {
+            if(data.errors){
+                alert(data.errors) 
+             }else{
+                 localStorage.setItem("token", data.jwt)
+                 dispatch({type:"LOG_IN_USER", payload: data.user})
+                //  history.push("/myprofile") 
+                   
+             }
+        })
+           
         
-    fetch('http://localhost:3001/api/v1/users', configObj)
-    .then(resp => resp.json())
-    .then(console.log)
+    }
+   
 }
+
+export function loginUser(userObj){
+
+    return dispatch => {
+        let configObj = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({user: userObj})}
+          
+    
+        return fetch('http://localhost:3001/api/v1/login', configObj)
+        .then(resp => resp.json())
+        .then( data => { 
+            if(data.errors){
+                alert(data.errors) 
+             }else{
+                 localStorage.setItem("token", data.jwt)
+                 dispatch({type:"LOG_IN_USER", payload: data.user})
+            //      history.push("/myprofile") 
+             }
+        })
+           
+        
+    }
+   
+}
+
+export function fetchLoggedInUser(){
+    return dispatch=>{
+        const token = localStorage.token
+        if (token) {
+            return fetch(`http://localhost:3001/api/v1/auto_login`, {
+              method: "GET",
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                'Authorization': `Bearer ${token}`
+              }
+            })
+              .then(resp => resp.json())
+              .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                  localStorage.removeItem("token")
+                } else {
+                   dispatch(loginUser(data))               
+                }
+              })
+          }
+    }
+}
+
