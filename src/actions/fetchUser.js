@@ -1,12 +1,9 @@
 // import { useHistory } from "react-router-dom"
 
   
-export function createUser(userObj){
+export function createUser(userObj,history){
    
-    
     return dispatch => {
-    
-       
         let configObj = {
             method: "POST",
             headers: {
@@ -23,7 +20,7 @@ export function createUser(userObj){
              }else{
                  localStorage.setItem("token", data.jwt)
                  dispatch({type:"LOG_IN_USER", payload: data.user})
-                //  history.push("/myprofile") 
+                 history.push("/myprofile") 
                    
              }
         })
@@ -33,7 +30,7 @@ export function createUser(userObj){
    
 }
 
-export function loginUser(userObj){
+export function loginUser(userObj,history){
 
     return dispatch => {
         let configObj = {
@@ -51,12 +48,14 @@ export function loginUser(userObj){
             if(data.errors){
                 alert(data.errors) 
              }else{
+        
+                 console.log(data)
                  localStorage.setItem("token", data.jwt)
                  dispatch({type:"LOG_IN_USER", payload: data.user})
-            //      history.push("/myprofile") 
+                 history.push("/myprofile") 
              }
         })
-           
+        
         
     }
    
@@ -65,6 +64,7 @@ export function loginUser(userObj){
 export function fetchLoggedInUser(){
     return dispatch=>{
         const token = localStorage.token
+    
         if (token) {
             return fetch(`http://localhost:3001/api/v1/auto_login`, {
               method: "GET",
@@ -76,11 +76,12 @@ export function fetchLoggedInUser(){
             })
               .then(resp => resp.json())
               .then(data => {
+                console.log(data)
                 if (data.error) {
                     alert(data.error)
                   localStorage.removeItem("token")
                 } else {
-                   dispatch(loginUser(data))               
+                   dispatch({type:"LOG_IN_USER", payload: data.user})               
                 }
               })
           }

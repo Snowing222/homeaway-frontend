@@ -15,6 +15,7 @@ import {fetchLoggedInUser} from './actions/fetchUser'
 import {logOutUser} from './actions/userAction'
 
 
+
 class App extends Component {
   componentDidMount(){
     this.props.fetchListings()
@@ -32,13 +33,12 @@ logOut = ()=>{
     return (
       <Router>
         {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
-        
      
         <Switch>
           <Route exact path = "/" component = {ListingContainer} />
           <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
           <Route exact path="/login" component= {UserContainer} />
-          <Route exact path="/myprofile" component={MyProfileContainer} />
+          <Route exact path="/myprofile" render  = {(routerProps) => <MyProfileContainer {...routerProps} />}/>
 
         </Switch>
       </Router>

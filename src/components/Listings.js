@@ -1,12 +1,15 @@
 import React from 'react'
 import Listing from './Listing'
-import {connect} from 'react-redux';
+// import { useHistory} from 'react-router-dom'
+
+import {NavLink} from 'react-router-dom'
 
 const Listings = ({listings}) => {
+
     if(listings.length!==0){
         return(
             <div>
-                {listings.map(listing => <Listing listing = {listing} key = {listing.id} />)}       
+                {listings.map(listing =><div key = {listing.id}> <NavLink key = {listing.id} to = {`/listings/${listing.id}`}>{listing.title}</NavLink></div>)}       
              </div>
             
         )
@@ -21,6 +24,6 @@ const Listings = ({listings}) => {
 }
 
 
-export default connect(state=>({listings: state.listings}))(Listings)
+export default Listings
 
  

@@ -1,4 +1,4 @@
-import { StaticRouter } from "react-router-dom"
+import produce from "immer"
 
 export default function userReducer(state={user:{}, login:false}, action) {
     console.log(action)
@@ -7,6 +7,10 @@ export default function userReducer(state={user:{}, login:false}, action) {
             return {...state, user: action.payload, login: true}
         case 'LOGOUT_USER':
             return {...state, user:{}, login: false}
+        case 'ADD_PROPERTY':
+            return produce(state, draftState => {
+                draftState.user.properties.push(action.payload)
+            })
         default:
             return state
     }

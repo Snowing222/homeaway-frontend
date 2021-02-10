@@ -1,29 +1,47 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {createProperty} from '../actions/fetchProperties'
 
 class PropertyInput extends Component {
     constructor(){
         super()
         this.state = {
-            userId = "",
-            photoSrc = "",
-            description = "",
-            bedroomNumber = "",
-            bathroomNumber = "",
-            guestNumber = "",
-            address = "",
-            state = "",
-            zipcode = ""
+            user_id: "",
+            photosrc: "",
+            description: "",
+            bedroomNumber: "1",
+            bathroomNumber: "1",
+            guestNumber: "",
+            address: "",
+            state: "NY",
+            zipcode: ""
 
         }
     }
+
     
     handleSubmit = (e) =>{
         e.preventDefault()
+        let propertyObj = {...this.state, user_id: this.props.user.user.id}
+        this.props.createProperty(propertyObj)
+        this.setState({
+            user_id: "",
+            photosrc: "",
+            description: "",
+            bedroomNumber: "1",
+            bathroomNumber: "1",
+            guestNumber: "",
+            address: "",
+            state: "NY",
+            zipcode: ""
+        })
+        
         
 
     }
 
     handleChange = (e)=>{
+        console.log(e.target.name, e.target.value)
         const {name, value} = e.target
         this.setState({
             [name]: value
@@ -38,26 +56,26 @@ class PropertyInput extends Component {
               <h1>Listing Your Property</h1>
               <form onSubmit = {this.handleSubmit}>
                 <label>Description:</label>
-                <Textarea name = "description" rows="4" cols="50" value = {this.state.description} onChange = {this.handleChange} />
+                <textarea name = "description" rows="4" cols="50" value = {this.state.description} onChange = {this.handleChange} />
 
                 <label>Upload Image:</label>
-                <input type = "text" name = "photo_src" value = {this.state.photoSrc} onChange = {this.handleChange}></input>
+                <input type = "text" name = "photosrc" value = {this.state.photosrc} onChange = {this.handleChange}></input>
 
                 <label>Number of Bedrooms: </label>
-                <Select name = "BedroomNumber" value = {this.state.bedroomNumber} onChange = {this.handleChange} >
+                <select name = "bedroomNumber" value = {this.state.bedroomNumber.value} onChange = {this.handleChange} >
                    <option value="1">1 Bedroom</option>
                    <option value="2">2 Bedrooms</option>
                    <option value="3">3 Bedrooms</option>
                    <option value="4">4 bedrooms</option>
                    <option value="5">5 bedrooms and above</option>
-                </Select>
+                </select>
 
                 <label>Number of Bathrooms: </label>
-                <Select name = "BathroomNumber" value = {this.state.bathroomNumber} onChange = {this.handleChange} >
+                <select name = "bathroomNumber" value = {this.state.bathroomNumber.value} onChange = {this.handleChange} >
                    <option value="1">1 Bathroom</option>
                    <option value="2">2 Bathrooms</option>
                    <option value="3">3 Bathrooms and above</option>   
-                </Select>
+                </select>
 
                 <label>Number of Guests:</label>
                 <input type = "text" name="guestNumber" value ={this.state.guestNumber} onChange = {this.handleChange}></input>
@@ -66,7 +84,7 @@ class PropertyInput extends Component {
                 <input type = "text" name="address" value ={this.state.address} onChange = {this.handleChange}></input>
 
                 <label>State:</label>
-                <select name = "state" value={this.state.state} onChange={this.handleChange}>
+                <select name = "state" value = {this.state.state.value} onChange={this.handleChange}>
                     <option value="NY">NY</option>
                     <option value="NJ">NJ</option>
                     <option value="FL">FL</option>
@@ -74,7 +92,7 @@ class PropertyInput extends Component {
                 </select>
 
                 <label>ZipCode:</label>
-                <input type = "text" name="address" value ={this.state.address} onChange = {this.handleChange}></input>
+                <input type = "text" name="zipcode" value ={this.state.zipcode} onChange = {this.handleChange}></input> 
                 <button type = "submit">List this Property</button>
               </form>
                 
@@ -83,4 +101,4 @@ class PropertyInput extends Component {
     }
 }
 
-export default PropertyInput;
+export default connect(state=>({user: state.user}), {createProperty})(PropertyInput);

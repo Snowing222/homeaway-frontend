@@ -11,9 +11,9 @@ class UserContainer extends Component {
         if(this.props.loggedIn){
             return <MyProfileContainer />
         }else if(path === '/signup'){
-            return <SignUp />
+            return <SignUp history = {this.props.history}/>
         }else{
-            return <LogIn />
+            return <LogIn history = {this.props.history}/>
         }
     }
   

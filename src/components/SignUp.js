@@ -22,9 +22,10 @@ class SignUp extends Component {
     }
 
     handleSignUpSubmit = (e) =>{
+        let history = this.props.history
         e.preventDefault()
         let userObj = this.state
-        this.props.createUser(userObj)
+        this.props.createUser(userObj,history)
         this.setState({
             name: "",
             email: "",
