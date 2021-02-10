@@ -30,11 +30,13 @@ logOut = ()=>{
 
 
   render() {
+
     return (
       <Router>
         {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
-     
+
         <Switch>
+        
           <Route exact path = "/" component = {ListingContainer} />
           <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
           <Route exact path="/login" component= {UserContainer} />

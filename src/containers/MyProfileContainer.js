@@ -12,24 +12,26 @@ class MyProfileContainer extends Component {
     render() {
       
         return (
-         <Router>
-             <div>
+            <Router>
+                 <div>
               <h1>Welcome {this.props.user.user.name}</h1>
                 <div>
                 <ul>
                     <li>
-                       {/* <NavLink to = {`myprofile/properties`}> Manage Your Properties</NavLink>   */}
-                        <NavLink to = {`${this.props.match.url}/properties`}> Manage Your Properties</NavLink>
+                       <NavLink to = "/myprofile/properties"> Manage Your Properties</NavLink>  
+                        {/* <NavLink to = {`${this.props.match.url}/properties`}> Manage Your Properties</NavLink> */}
                     </li>
                     <li>
-                        <NavLink to =  {`${this.props.match.url}/listings`}>All listings</NavLink>
+                    <NavLink to = "/myprofile/listings"> All listings</NavLink> 
+                        {/* <NavLink to =  {`${this.props.match.url}/listings`}>All listings</NavLink> */}
                     </li>
                 </ul>
 
                 <Switch>
-                    <Route exact path = {`${this.props.match.url}/properties`} render  = {(routerProps) => <PropertiesContainer {...routerProps} />}/>
-
-                    <Route exact path =  {`${this.props.match.url}/listings`} render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/>
+                    <Route exact path = "/myprofile/properties" render  = {(routerProps) => <PropertiesContainer {...routerProps} />}/>
+                    {/* <Route exact path = {`${this.props.match.url}/properties`} render  = {(routerProps) => <PropertiesContainer {...routerProps} />}/> */}
+                     <Route exact path = "/myprofile/listings" render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/>
+                    {/* <Route exact path =  {`${this.props.match.url}/listings`} render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/> */}
                 
                 </Switch>
 
@@ -44,7 +46,10 @@ class MyProfileContainer extends Component {
               
                 
             </div>
-         </Router>
+            </Router>
+       
+            
+     
             
         );
     }

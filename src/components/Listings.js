@@ -6,6 +6,8 @@ import {NavLink} from 'react-router-dom'
 
 const Listings = ({listings}) => {
 
+   // const history = useHistory()
+
     if(listings.length!==0){
         return(
             <div>
