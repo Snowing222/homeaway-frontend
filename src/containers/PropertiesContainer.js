@@ -1,20 +1,31 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {Route} from 'react-router-dom';
+import React from 'react';
+import {Route,  BrowserRouter as Router, NavLink} from 'react-router-dom';
 import PropertiesList from '../components/PropertiesList'
+import PropertyInput from '../components/PropertyInput';
+import PropertyShowPage from '../components/PropertyShowPage'
 
 
-class PropertiesContainer extends Component {
-    
-    render() {
+const PropertiesContainer =({match, user})=> {
+
         return (
-            <div>
-                <PropertiesList properties = {this.props.user.properties} userId = {this.props.user.id}/>
+
+            <Router>
+             <div>
             
-               
-            </div>
-        );
-    }
+                <PropertiesList properties = {user.properties} userId = {user.id}/>
+                <NavLink to = {`${match.url}/new`}>List a new property</NavLink> 
+
+                {/* <Route exact strict path = {`${match.path}/new`} component = {PropertyInput} /> */}
+ 
+                
+                <Route exact strict path = {`${match.path}/:propertyId`} render = {(routerProps) => <PropertyShowPage {...routerProps} properties = {user.properties}/> } />
+              
+                    
+             </div>
+            </Router>
+            
+
+        )
 }
 
-export default connect(state=>({user: state.user.user}))(PropertiesContainer);
+export default PropertiesContainer;

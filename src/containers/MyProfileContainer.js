@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {NavLink, Route, Switch, BrowserRouter as Router, } from 'react-router-dom'
-import PropertiesList from '../components/PropertiesList';
-import PropertyInput from '../components/PropertyInput';
 import PropertiesContainer from './PropertiesContainer';
 import UserListingsContainer from './UserListingsContainer'
 
@@ -18,7 +16,7 @@ class MyProfileContainer extends Component {
                 <div>
                 <ul>
                     <li>
-                       <NavLink to = "/myprofile/properties"> Manage Your Properties</NavLink>  
+                     <NavLink to = "/myprofile/properties"> Manage Your Properties</NavLink>  
                         {/* <NavLink to = {`${this.props.match.url}/properties`}> Manage Your Properties</NavLink> */}
                     </li>
                     <li>
@@ -28,28 +26,18 @@ class MyProfileContainer extends Component {
                 </ul>
 
                 <Switch>
-                    <Route exact path = "/myprofile/properties" render  = {(routerProps) => <PropertiesContainer {...routerProps} />}/>
+                    <Route exact path = "/myprofile/properties" render  = {(routerProps) => <PropertiesContainer {...routerProps} user = {this.props.user.user}/>}/>
                     {/* <Route exact path = {`${this.props.match.url}/properties`} render  = {(routerProps) => <PropertiesContainer {...routerProps} />}/> */}
                      <Route exact path = "/myprofile/listings" render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/>
                     {/* <Route exact path =  {`${this.props.match.url}/listings`} render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/> */}
                 
                 </Switch>
-
-                 {/* <PropertyInput /> */}
-
-                 
-                
-                  
-                  
         
                 </div>
-              
                 
             </div>
             </Router>
-       
-            
-     
+    
             
         );
     }

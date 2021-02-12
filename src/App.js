@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 import MyNotLoggedInNavBar from './components/MyNotLoggedInNavBar';
 import MyLoggedInNavBar from './components/MyLoggedInNavBar';
@@ -13,6 +13,7 @@ import {fetchListings} from './actions/fetchListings'
 import MyProfileContainer from './containers/MyProfileContainer'
 import {fetchLoggedInUser} from './actions/fetchUser'
 import {logOutUser} from './actions/userAction'
+import  Listing  from './components/Listing'
 
 
 
@@ -30,20 +31,24 @@ logOut = ()=>{
 
 
   render() {
-
     return (
-      <Router>
-        {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
+      <div>   
+      {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
 
-        <Switch>
-        
-          <Route exact path = "/" component = {ListingContainer} />
-          <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
-          <Route exact path="/login" component= {UserContainer} />
-          <Route exact path="/myprofile" render  = {(routerProps) => <MyProfileContainer {...routerProps} />}/>
+      <Switch>
+       
+        <Route exact path = "/" component = {ListingContainer} />
+        <Route path = {`/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} />
+        <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
+        <Route exact path="/login" component= {UserContainer} />
+        <Route exact path="/myprofile" render  = {() =>( (this.props.login) ? (<MyProfileContainer/>) : (<ListingContainer />))}/>
+        {/* <Route exact path = '/myprofile' render = {()=> <MyProfileContainer />} /> */}
 
-        </Switch>
-      </Router>
+
+      </Switch>
+   </div>
+
+     
     );
   }
 }

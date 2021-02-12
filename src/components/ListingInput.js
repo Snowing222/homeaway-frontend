@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
 
 class ListingInput extends Component {
-    render() {
-        constructor(){
-            super()
-            this.state = {
+    constructor(){
+        super()
+        this.state = {
+            title: "",
+            price: "",
+            avail_date_begin: "",
+            avail_date_end: "",
+            avail_period: "",
+            trade_mode: "",
+            rent_mode: "",
+            strict_mode: ""
 
-            }
         }
+    }
 
-        
+    handleSubmit = ()=>{
+
+    }
+
+    render() {
         return (
             <div>
-                <form>
+               <form onSubmit = {this.handleSubmit}>
+               
 
-
-                </form>
+               </form>
             </div>
         );
     }

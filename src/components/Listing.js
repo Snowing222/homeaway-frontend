@@ -1,32 +1,31 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 const Listing = ({match, listings}) => {
-    
+    console.log(listings)
     let listing = listings.find(listing => listing.id === parseInt(match.params.listingId))
     console.log(listing)
     let rent
     let trade
     let strict
 
-    if (listing.rent_mode){
+    if (listing && listing.rent_mode){
         rent = <p>Rent for  ${listing.price} </p>
     }
 
-    if (listing.trade_mode){
+    if (listing && listing.trade_mode){
         trade = <p>Accept Trade</p>
     }else{
         trade = <p> Not Accept Trade</p>
     }
 
-    if(listing.strict_mode){
+    if(listing && listing.strict_mode){
         strict = <p>negotiable</p> 
     }else{
         strict = <p>Not negotiable</p>
     }
     
-    
-
-    return (
+    if(listing){return (
         <div>
             <h1>{listing.title}</h1>
             <p>{listing.property.description}</p>
@@ -41,7 +40,13 @@ const Listing = ({match, listings}) => {
 
         </div>
 
-    ) 
+    ) }else{
+        return(
+            <div>No listing match</div>
+        )
+    }
+
+    
 }
 
-export default Listing
+export default connect(state=>({listings: state.listings}))(Listing)

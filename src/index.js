@@ -6,6 +6,7 @@ import {createStore, applyMiddleware, compose, combineReducers} from 'redux
 import thunk from 'redux-thunk'
 import listsReducer from './reducers/listsReducer'
 import userReducer from './reducers/userReducer'
+import {BrowserRouter as Router} from 'react-router-dom'
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -15,9 +16,12 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || com
 const store = createStore(rootReducer,  composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Router>
+    <Provider store={store}>
     <App />
-  </Provider>,
+    </Provider>
+  </Router>
+ ,
   document.getElementById('root')
 );
 
