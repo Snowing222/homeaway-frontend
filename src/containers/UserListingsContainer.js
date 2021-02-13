@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {connect} from 'react-redux'
+import Listings from '../components/Listings';
 
-class UserListingsContainer extends Component {
-    render() {
-        return (
-            <div>
-                UserListings link
-            </div>
-        );
-    }
+
+const UserListingsContainer = ({user}) => {
+
+    return(
+      
+        <div>
+          {user.properties.map(p => <Listings listings = {p.listings}/>) }   
+        </div>
+    )
 }
 
-export default UserListingsContainer;
+export default connect(state=>({user: state.user.user}))(UserListingsContainer)
+
+
