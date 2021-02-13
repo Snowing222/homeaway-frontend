@@ -41,7 +41,7 @@ logOut = ()=>{
         <Route path = {`/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} />
         <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
         <Route exact path="/login" component= {UserContainer} />
-        <Route exact path="/myprofile" render  = {() =>( (this.props.login) ? (<MyProfileContainer/>) : (<ListingContainer />))}/>
+        <Route path="/myprofile" render  = {() =>( (this.props.login) ? (<MyProfileContainer/>) : (<ListingContainer />))}/>
         {/* <Route exact path = '/myprofile' render = {()=> <MyProfileContainer />} /> */}
 
 

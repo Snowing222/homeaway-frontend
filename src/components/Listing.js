@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 const Listing = ({match, listings}) => {
-    console.log(listings)
+
     let listing = listings.find(listing => listing.id === parseInt(match.params.listingId))
-    console.log(listing)
+   
     let rent
     let trade
     let strict

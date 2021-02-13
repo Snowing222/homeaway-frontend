@@ -1,6 +1,7 @@
-export function createProperty(propertyObj){
+export function createProperty(propertyObj, history){
 
 return dispatch => {
+    dispatch({ type: 'CREATING_PROPERTY' })
 
     let configObj = {
         method: "POST",
@@ -18,8 +19,9 @@ return dispatch => {
            if(data.errors){
                alert(data.errors)
            }else{
-               console.log(data)
-               dispatch({type: "ADD_PROPERTY", payload: data})
+               dispatch({type: "ADD_PROPERTY", payload: {...data, listings:[]}})
+               let url = `/myprofile/properties/${data.id}`
+               history.push(url)
            }
         })
 

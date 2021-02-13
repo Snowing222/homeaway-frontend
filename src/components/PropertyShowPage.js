@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Link, NavLink, withRouter} from 'react-router-dom';
+import {Route, Switch, Link, NavLink, withRouter} from 'react-router-dom';
 import listingReducer from '../reducers/listsReducer';
 import ListingInput from './ListingInput'
 import Listing from './Listing'
@@ -7,13 +7,13 @@ import Listing from './Listing'
 const PropertyShowPage = ({match, properties}) =>{
 
     let property = properties.find(property => property.id === parseInt(match.params.propertyId))
-    console.log(property)
+    console.log(property.listings)
     let activeListings 
 
-    if(property.listings.length > 0){
+    if(property && property.listings.length > 0){
       activeListings = 
         <ul>
-          {property.listings.map(listing => (<Link to = {`/listings/${listing.id}`}>{listing.title}</Link>))}
+          {property.listings.map(listing => (<Link to = {`${match.url}/listings/${listing.id}`}>{listing.title}</Link>))}
 
         </ul>
     }else{
@@ -30,16 +30,15 @@ const PropertyShowPage = ({match, properties}) =>{
           <p>host up to {property.guest_number} guest</p>
           <p>All active listings</p>
            {activeListings}
-
-           <Route exact path  = {`${match.path}/listings/new`} >
+          <Switch>
+          <Route path  = {`${match.path}/listings/new`} >
                <ListingInput />
            </Route>
 
-           
+           <Route path = {`${match.path}/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} />
+          </Switch>
 
            
-
-            
         </div>
     )
 

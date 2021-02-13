@@ -10,7 +10,7 @@ class MyProfileContainer extends Component {
     render() {
       
         return (
-            <Router>
+            
                  <div>
               <h1>Welcome {this.props.user.user.name}</h1>
                 <div>
@@ -26,9 +26,9 @@ class MyProfileContainer extends Component {
                 </ul>
 
                 <Switch>
-                    <Route exact path = "/myprofile/properties" render  = {(routerProps) => <PropertiesContainer {...routerProps} user = {this.props.user.user}/>}/>
+                    <Route path = "/myprofile/properties" render  = {(routerProps) => <PropertiesContainer {...routerProps} user = {this.props.user.user}/>}/>
                     {/* <Route exact path = {`${this.props.match.url}/properties`} render  = {(routerProps) => <PropertiesContainer {...routerProps} />}/> */}
-                     <Route exact path = "/myprofile/listings" render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/>
+                     <Route path = "/myprofile/listings" render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/>
                     {/* <Route exact path =  {`${this.props.match.url}/listings`} render  = {(routerProps) => <UserListingsContainer {...routerProps} />}/> */}
                 
                 </Switch>
@@ -36,7 +36,7 @@ class MyProfileContainer extends Component {
                 </div>
                 
             </div>
-            </Router>
+         
     
             
         );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {createProperty} from '../actions/fetchProperties'
+import {createProperty} from '../actions/fetchProperties';
+import {withRouter} from 'react-router-dom'
 
 class PropertyInput extends Component {
     constructor(){
@@ -21,23 +22,10 @@ class PropertyInput extends Component {
 
     
     handleSubmit = (e) =>{
+        let history = this.props.history
         e.preventDefault()
         let propertyObj = {...this.state, user_id: this.props.user.user.id}
-        this.props.createProperty(propertyObj)
-        this.setState({
-            user_id: "",
-            photosrc: "",
-            description: "",
-            bedroomNumber: "1",
-            bathroomNumber: "1",
-            guestNumber: "",
-            address: "",
-            state: "NY",
-            zipcode: ""
-        })
-        
-        
-
+        this.props.createProperty(propertyObj, history)
     }
 
     handleChange = (e)=>{
@@ -101,4 +89,4 @@ class PropertyInput extends Component {
     }
 }
 
-export default connect(state=>({user: state.user}), {createProperty})(PropertyInput);
+export default withRouter(connect(state=>({user: state.user}), {createProperty})(PropertyInput));
