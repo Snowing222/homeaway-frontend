@@ -1,6 +1,5 @@
 import React from 'react';
 import {Route, Switch, Link, NavLink, withRouter} from 'react-router-dom';
-import listingReducer from '../reducers/listsReducer';
 import ListingInput from './ListingInput'
 import Listing from './Listing'
 

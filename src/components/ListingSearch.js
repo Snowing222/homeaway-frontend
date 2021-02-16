@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {fetchListings} from '../actions/fetchListings'
+import {fetchListings} from '../actions/fetchListings';
+import {Form, Col, Button} from 'react-bootstrap'
+
 
 class ListingSearch extends Component {
     constructor(){
@@ -30,17 +32,35 @@ class ListingSearch extends Component {
     render() {
         return (
             <div>
-                <form onSubmit = {this.handleSubmit}>
-                    <label>How many days you will travel:</label>
-                    <input type = "text" name ="avail_period" value = {this.state.avail_period} onChange = {this.handleChange} />
-                    <label>Available days begine:</label>
-                    <input type = "date" name = "avail_date_begin" value = {this.state.avail_date_begin} onChange = {this.handleChange} />
-                    <label>Available days end</label>
-                    <input type = "date" name = "avail_date_end" value = {this.state.avail_date_en} onChange = {this.handleChange} />
-                    <button type = "submit" >Search</button>
+                <Form inline onSubmit = {this.handleSubmit}>    
+                <Col md = {4}>
+                   <Form.Group >
+                    <Form.Label>Travel for:{' '} </Form.Label>
+                    <Form.Control type = "text" name ="avail_period" value = {this.state.avail_period} onChange = {this.handleChange} />{' '}Days
+                    </Form.Group>
+                </Col>
+                   
+                <Col md = {3}>
+                   <Form.Group >
+                    <Form.Label>From:</Form.Label>
+                    <Form.Control type = "date" name = "avail_date_begin" value = {this.state.avail_date_begin} onChange = {this.handleChange} />
+                    </Form.Group>
+                </Col>
+                   
+                <Col md = {3}>
+                    <Form.Group >
+                    <Form.Label>To:</Form.Label>
+                    <Form.Control type = "date" name = "avail_date_end" value = {this.state.avail_date_en} onChange = {this.handleChange} />
+                    </Form.Group>
+                </Col>  
+                   
+                <Col md = {{ span: 1, offset: 1 }}>
+                <Button type = "submit" variant="primary" >Search</Button>
+                </Col> 
+                    
 
 
-                </form>
+                </Form>
             </div>
         );
     }

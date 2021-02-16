@@ -1,26 +1,38 @@
 import { NavLink } from 'react-router-dom';
 import { useHistory} from 'react-router-dom'
-import Navbar from 'react-bootstrap/NavBar'
-import Button from 'react-bootstrap/Button'
+import {Navbar, Button, Container} from 'react-bootstrap'
+import {connect} from 'react-redux'
 
-
-const MyLoggedInNavBar = ({logOut}) => {
+const MyLoggedInNavBar = ({user,logOut}) => {
   const history = useHistory()
-  
-  return (
 
-     <Navbar bg="light" variant="light" sticky="top">
+  return (
+   
+  <Container>
+    <Navbar bg="light" variant="light" sticky="top">
       <Navbar.Brand href = '/'> HomeAway </Navbar.Brand>
-      <NavLink className = 'nav-link' to="/myprofile">My Profile</NavLink>
-      <Button  variant="outline-info" onClick = {()=>{
+      <Navbar.Collapse className="justify-content-end">
+      {/* <NavLink className = 'nav-link' to="/myprofile">My Profile</NavLink> */}
+
+      <Navbar.Text>
+      <NavLink className = 'nav-link' to="/myprofile">Sign in as: {user.name}</NavLink>
+      </Navbar.Text>
+   
+      <Button  className="justify-content-end"  size="sm" variant="outline-info" onClick = {()=>{
         logOut()
         history.push('/')
       }}>Log Out</Button>
+         </Navbar.Collapse>
+    
+  
+
     </Navbar>
+  </Container>
+     
 
     
   );
 };
 
     
-export default MyLoggedInNavBar;
+export default connect(state=>({user: state.user.user}))(MyLoggedInNavBar);

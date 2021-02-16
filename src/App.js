@@ -35,18 +35,22 @@ logOut = ()=>{
     return (
       <Container>   
       {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
+  
 
+      <div style = {{marginTop: '20px'}}>
       <Switch>
        
-        <Route exact path = "/" component = {ListingContainer} />
-        <Route path = {`/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} />
-        <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
-        <Route exact path="/login" component= {UserContainer} />
-        <Route path="/myprofile" render  = {() =>( (this.props.login) ? (<MyProfileContainer/>) : (<ListingContainer />))}/>
-        {/* <Route exact path = '/myprofile' render = {()=> <MyProfileContainer />} /> */}
+       <Route exact path = "/" component = {ListingContainer} />
+       <Route path = {`/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} />
+       <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
+       <Route exact path="/login" component= {UserContainer} />
+       <Route path="/myprofile" render  = {() =>( (this.props.login) ? (<MyProfileContainer/>) : (<ListingContainer />))}/>
+       {/* <Route exact path = '/myprofile' render = {()=> <MyProfileContainer />} /> */}
 
 
-      </Switch>
+     </Switch>
+      </div>
+      
    </Container>
 
      

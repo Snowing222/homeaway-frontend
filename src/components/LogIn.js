@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/fetchUser';
 import {Redirect} from 'react-router-dom';
-import {Form, Button} from 'react-bootstrap'
+import {Form, Button} from 'react-bootstrap';
+// import '../css/form.css'
+
 
 
 class LogIn extends Component {
@@ -35,12 +37,11 @@ class LogIn extends Component {
     }
 
     render() {
-        console.log(this.props)
         if (this.props.user.login === 'true') {
             return <Redirect to='/myprofile'/>;
          }else{
             return (
-                  <Form onSubmit = {this.handleLoginSubmit}>
+                  <Form onSubmit = {this.handleLoginSubmit} className = "authentica">
                     <Form.Group controId = "loginEmail">
                       <Form.Label>Email:</Form.Label>
                       <Form.Control type = "email" name = "email" placeholder = "Enter email" value = {this.state.email} onChange = {this.handleChange}/>

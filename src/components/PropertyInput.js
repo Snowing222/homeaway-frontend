@@ -45,7 +45,7 @@ class PropertyInput extends Component {
     render() {
         return (
             <div>
-              <h1>Listing Your Property</h1>
+              <h1>LIST A NEW PROPERTY</h1>
              
               <Form onSubmit = {this.handleSubmit}>
 

@@ -5,7 +5,7 @@ const Listings = ({listings}) => {
 
    
         return(
-            <div>
+            <div style = {{margin: "30px"}}>
                 {listings.map(listing =><div key = {listing.id}> <NavLink key = {listing.id} to = {`/listings/${listing.id}`}>{listing.title}</NavLink></div>)}            
              </div>
             
