@@ -1,18 +1,24 @@
 import { NavLink } from 'react-router-dom';
 import { useHistory} from 'react-router-dom'
+import Navbar from 'react-bootstrap/NavBar'
+import Button from 'react-bootstrap/Button'
+
 
 const MyLoggedInNavBar = ({logOut}) => {
   const history = useHistory()
   
   return (
-    <div className="navbar">
-      <NavLink to="/">Home</NavLink><span>&nbsp;&nbsp;</span>
-      <NavLink to="/myprofile">My Profile</NavLink><span>&nbsp;&nbsp;</span>
-      <button onClick = {()=>{
+
+     <Navbar bg="light" variant="light" sticky="top">
+      <Navbar.Brand href = '/'> HomeAway </Navbar.Brand>
+      <NavLink className = 'nav-link' to="/myprofile">My Profile</NavLink>
+      <Button  variant="outline-info" onClick = {()=>{
         logOut()
         history.push('/')
-      }}>Log Out</button>
-    </div>
+      }}>Log Out</Button>
+    </Navbar>
+
+    
   );
 };
 

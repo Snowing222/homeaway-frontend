@@ -1,5 +1,4 @@
 import React from 'react'
-import Listing from './Listing'
 import {NavLink} from 'react-router-dom'
 
 const Listings = ({listings}) => {

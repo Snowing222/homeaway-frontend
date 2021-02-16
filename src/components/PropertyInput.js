@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {createProperty} from '../actions/fetchProperties';
 import {withRouter} from 'react-router-dom'
+import { Form, Col ,Button} from 'react-bootstrap';
 
 class PropertyInput extends Component {
     constructor(){
@@ -22,6 +23,7 @@ class PropertyInput extends Component {
 
     
     handleSubmit = (e) =>{
+        console.log(this.state)
         let history = this.props.history
         e.preventDefault()
         let propertyObj = {...this.state, user_id: this.props.user.user.id}
@@ -38,51 +40,81 @@ class PropertyInput extends Component {
     }
 
 
+
+
     render() {
         return (
             <div>
               <h1>Listing Your Property</h1>
-              <form onSubmit = {this.handleSubmit}>
-                <label>Description:</label>
-                <textarea name = "description" rows="4" cols="50" value = {this.state.description} onChange = {this.handleChange} />
+             
+              <Form onSubmit = {this.handleSubmit}>
 
-                <label>Upload Image:</label>
-                <input type = "text" name = "photosrc" value = {this.state.photosrc} onChange = {this.handleChange}></input>
+              <Form.Group controlId="formGridAddress">
+                <Form.Label>Address 2</Form.Label>
+                  <Form.Control name="address" value ={this.state.address} onChange = {this.handleChange} placeholder="Apartment, studio, or floor" />
+              </Form.Group>
+              
+              <Form.Row>
+              <Form.Group as={Col} controlId="formGridState">
+              <Form.Label>State</Form.Label>
+               <Form.Control as="select"  name = "state" value = {this.state.state.value} onChange={this.handleChange}>
+                    <option value="NY">NY</option>
+                    <option value="NJ">NJ</option>
+                    <option value="FL">FL</option>
+                    <option value="CA">CA</option>
+                </Form.Control>
+                </Form.Group>
+                
+                <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>ZipCode:</Form.Label>
+                <Form.Control name="zipcode" value ={this.state.zipcode} onChange = {this.handleChange} /> 
+                </Form.Group>
+              </Form.Row>
+               
+            
 
-                <label>Number of Bedrooms: </label>
-                <select name = "bedroomNumber" value = {this.state.bedroomNumber.value} onChange = {this.handleChange} >
+              <Form.Group>
+                <Form.File id="UploadImage" label="Upload images" value = {this.state.photosrc.value} onChange = {this.handleChange}  />
+               </Form.Group>
+
+                
+                <Form.Group>
+                <Form.Label>Number of Bedrooms: </Form.Label>
+                <Form.Control as = "select" name = "bedroomNumber" value = {this.state.bedroomNumber.value} onChange = {this.handleChange} >
                    <option value="1">1 Bedroom</option>
                    <option value="2">2 Bedrooms</option>
                    <option value="3">3 Bedrooms</option>
                    <option value="4">4 bedrooms</option>
                    <option value="5">5 bedrooms and above</option>
-                </select>
-
-                <label>Number of Bathrooms: </label>
-                <select name = "bathroomNumber" value = {this.state.bathroomNumber.value} onChange = {this.handleChange} >
+                </Form.Control>
+                </Form.Group>
+                
+                
+                <Form.Group>
+                <Form.Label>Number of Bathrooms: </Form.Label>
+                <Form.Control as = "select" name = "bathroomNumber" value = {this.state.bathroomNumber.value} onChange = {this.handleChange} >
                    <option value="1">1 Bathroom</option>
                    <option value="2">2 Bathrooms</option>
                    <option value="3">3 Bathrooms and above</option>   
-                </select>
+                </Form.Control>
 
-                <label>Number of Guests:</label>
-                <input type = "text" name="guestNumber" value ={this.state.guestNumber} onChange = {this.handleChange}></input>
+                </Form.Group>
 
-                <label>Address:</label>
-                <input type = "text" name="address" value ={this.state.address} onChange = {this.handleChange}></input>
 
-                <label>State:</label>
-                <select name = "state" value = {this.state.state.value} onChange={this.handleChange}>
-                    <option value="NY">NY</option>
-                    <option value="NJ">NJ</option>
-                    <option value="FL">FL</option>
-                    <option value="CA">CA</option>
-                </select>
+                <Form.Group>
+                <Form.Label>Number of Guests:</Form.Label>
+                <Form.Control name="guestNumber" value ={this.state.guestNumber} onChange = {this.handleChange} />
+                </Form.Group>
 
-                <label>ZipCode:</label>
-                <input type = "text" name="zipcode" value ={this.state.zipcode} onChange = {this.handleChange}></input> 
-                <button type = "submit">List this Property</button>
-              </form>
+                
+                <Form.Group>
+                <Form.Label>Description:</Form.Label>
+                <Form.Control as ="textarea" name = "description" rows="4" cols="50" value = {this.state.description} onChange = {this.handleChange} />
+                
+                </Form.Group>
+                
+                <Button type = "submit" variant="primary">List this Property</Button>
+              </Form>
                 
             </div>
         );

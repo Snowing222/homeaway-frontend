@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import {createListing} from '../actions/fetchListings'
-import {connect} from 'react-redux'
+import {createListing} from '../actions/fetchListings';
+import {connect} from 'react-redux';
+import { Form, Button} from 'react-bootstrap';
 
 class ListingInput extends Component {
     constructor(){
@@ -21,8 +22,8 @@ class ListingInput extends Component {
     handleChange = (e) =>{
       
      let {name, value} = e.target
-       value === "true"? value = true : value = value
-       value === "false"? value = false : value = value
+       value = (value === "true"? true : value)
+       value = (value === "false"? false : value)
        this.setState({
            [name]: value
        })
@@ -39,41 +40,66 @@ class ListingInput extends Component {
 
     render() {
         return (
-            <div>
-               <form onSubmit = {this.handleSubmit}>
-                   <label>Title:</label>
-                   <input type = "text" name = "title" value = {this.state.title} onChange = {this.handleChange} placeholder = "An eye catching title" />
-                   <label>Available Date from: </label>
-                   <input type = "date" name = "avail_date_begin" value = {this.state.avail_date_begin} onChange = {this.handleChange} />
-                   <label>Available Date to: </label>
-                   <input type = "date" name = "avail_date_end" value = {this.state.avail_date_end} onChange = {this.handleChange} />
-                   <label>How many days is it available: </label>
-                   <input type = "text" name = "avail_period" value = {this.state.period} onChange = {this.handleChange} />
-                   <label>Does it allow rent?</label>
-                   <select name = "rent_mode" value = {this.state.rent_mode} onChange={this.handleChange}>
+            <div> 
+               <h2>CREAT A NEW LISTING</h2>
+               <Form onSubmit = {this.handleSubmit}>
+                   <Form.Group>
+                   <Form.Label> Title: </Form.Label>
+                   <Form.Control name = "title" value = {this.state.title} onChange = {this.handleChange} placeholder = "An eye catching title" />
+                   </Form.Group>
+                   
+                   <Form.Group>
+                   <Form.Label>Available Date from: </Form.Label>
+                   <Form.Control type = "date" name = "avail_date_begin" value = {this.state.avail_date_begin} onChange = {this.handleChange} />
+                   </Form.Group>
+
+                   <Form.Group>
+                   <Form.Label>Available Date to: </Form.Label>
+                   <Form.Control type = "date" name = "avail_date_end" value = {this.state.avail_date_end} onChange = {this.handleChange} />
+                   </Form.Group>
+
+                   <Form.Group>
+                   <Form.Label>How many days is it available: </Form.Label>
+                   <Form.Control name = "avail_period" value = {this.state.period} onChange = {this.handleChange} />
+                   </Form.Group>
+
+                   <Form.Group>
+                   <Form.Label>Rent Mode</Form.Label>
+                   <Form.Text Muted>People can rent your place if you choose Yes</Form.Text>
+                   <Form.Control as = "select" name = "rent_mode" value = {this.state.rent_mode} onChange={this.handleChange}>
                      <option value = "true">Yes</option>
                      <option value = "false">No</option>
-                   </select>
+                   </Form.Control>
+                   </Form.Group>
 
-                   <label>Does it allow trade?</label>
-                   <select name = "trade_mode" value = {this.state.trade_mode} onChange={this.handleChange}>
+                   <Form.Group>
+                   <Form.Label>Trade Mode:</Form.Label>
+                   <Form.Text Muted>People can exchange with your place if you choose Yes</Form.Text>
+                   <Form.Control as = "select" name = "trade_mode" value = {this.state.trade_mode} onChange={this.handleChange}>
                      <option value = "true">Yes</option>
                      <option value = "false">No</option>
-                   </select>
+                   </Form.Control>
+                   </Form.Group>
 
-                   <label>Are you flexible with the price and terms</label>
-                   <select name = "strict_mode" value = {this.state.strict_mode} onChange={this.handleChange}>
+
+                 <Form.Group>
+                   <Form.Label>Strict Mode:</Form.Label>
+                   <Form.Text Muted>Are you strict with price, timeframe, or trade mode</Form.Text>
+                   <Form.Control as = "select" name = "strict_mode" value = {this.state.strict_mode} onChange={this.handleChange}>
                      <option value = "true">Yes</option>
                      <option value = "false">No</option>
-                   </select>
+                   </Form.Control>
+                   </Form.Group>
+                   
+                   <Form.Group>
+                   <Form.Label>How much per night?  </Form.Label>
+                   <Form.Control name = "price" value = {this.state.price} onChange = {this.handleChange} />
+                   </Form.Group>
 
-                   <label>How much per night? </label>
-                   <input type = "text" name = "price" value = {this.state.price} onChange = {this.handleChange} />
-
-                   <button type = "submit">Submit Listing</button>
+                   <Button type = "submit" variant="primary">Submit Listing</Button>
                    
 
-               </form>
+               </Form>
             </div>
         );
     }

@@ -23,13 +23,15 @@ const PropertyShowPage = ({match, properties}) =>{
     return(
 
         <div>
-          <NavLink to = {`${match.url}/listings/new`} >Create a new listing</NavLink>
           <h1>{property.address} - {property.state} - {property.zipcode}</h1>
+          <NavLink to = {`${match.url}/listings/new`} >Create a new listing</NavLink>
           <p>{property.description}</p>
           <p>{property.bedroom_number} bedrooms - {property.bathroom_number} bathrooms</p>
           <p>host up to {property.guest_number} guest</p>
           <p>All active listings</p>
            {activeListings}
+
+          
           <Switch>
           <Route path  = {`${match.path}/listings/new`} >
                <ListingInput />

@@ -7,6 +7,8 @@ import thunk from 'redux-thunk'
 import listsReducer from './reducers/listsReducer'
 import userReducer from './reducers/userReducer'
 import {BrowserRouter as Router} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './css/index.css'
 
 const rootReducer = combineReducers({
   user: userReducer,

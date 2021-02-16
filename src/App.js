@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Switch,
   Route,
-  Redirect
 } from "react-router-dom";
 import MyNotLoggedInNavBar from './components/MyNotLoggedInNavBar';
 import MyLoggedInNavBar from './components/MyLoggedInNavBar';
@@ -14,6 +13,8 @@ import MyProfileContainer from './containers/MyProfileContainer'
 import {fetchLoggedInUser} from './actions/fetchUser'
 import {logOutUser} from './actions/userAction'
 import  Listing  from './components/Listing'
+
+import {Container} from 'react-bootstrap'
 
 
 
@@ -32,7 +33,7 @@ logOut = ()=>{
 
   render() {
     return (
-      <div>   
+      <Container>   
       {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
 
       <Switch>
@@ -46,7 +47,7 @@ logOut = ()=>{
 
 
       </Switch>
-   </div>
+   </Container>
 
      
     );

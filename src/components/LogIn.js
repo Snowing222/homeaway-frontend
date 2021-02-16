@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/fetchUser';
 import {Redirect} from 'react-router-dom';
+import {Form, Button} from 'react-bootstrap'
 
 
 class LogIn extends Component {
@@ -39,15 +40,23 @@ class LogIn extends Component {
             return <Redirect to='/myprofile'/>;
          }else{
             return (
-                <div className = "LogIn">
-                  <form onSubmit = {this.handleLoginSubmit}>
-                      <label>Email:</label>
-                      <input type = "text" name = "email" placeholder = "email" value = {this.state.email} onChange = {this.handleChange}/>
-                      <label>Password:</label>
-                      <input type = "password" name = "password" placeholder = "password" value = {this.state.password} onChange = {this.handleChange}/>
-                      <button type = "submit">Log In</button>
-                  </form>
-                </div>
+                  <Form onSubmit = {this.handleLoginSubmit}>
+                    <Form.Group controId = "loginEmail">
+                      <Form.Label>Email:</Form.Label>
+                      <Form.Control type = "email" name = "email" placeholder = "Enter email" value = {this.state.email} onChange = {this.handleChange}/>
+                    </Form.Group>
+
+
+                    <Form.Group controId = "loginEmail">
+                      <Form.Label>Password:</Form.Label>
+                      <Form.Control type = "password" name = "password" placeholder = "password" value = {this.state.password} onChange = {this.handleChange}/>
+                    </Form.Group>
+                     
+                      <Button type = "submit" variant = 'primary'>Log In</Button>
+                   
+
+                     
+                  </Form>
               )
          }
         

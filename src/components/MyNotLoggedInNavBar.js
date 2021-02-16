@@ -1,12 +1,23 @@
 import { NavLink } from 'react-router-dom';
+import Navbar from 'react-bootstrap/NavBar'
+import {Container, Col, Row} from 'react-bootstrap'
 
 const MyNotLoggedInNavBar = () => {
   return (
-    <div className="navbar">
-      <NavLink to="/">Home</NavLink><span>&nbsp;&nbsp;</span>
-      <NavLink to="/signup">Becomes a host</NavLink><span>&nbsp;&nbsp;</span>
-      <NavLink to="/login">Log In</NavLink> 
-    </div>
+
+         <Navbar bg="light" variant="light" sticky="top">
+   
+    <Navbar.Brand href = '/'> HomeAway </Navbar.Brand>
+ 
+        <NavLink className = 'nav-link' to="/signup">Becomes a host</NavLink>
+        <NavLink className = 'nav-link' to="/login">Log In</NavLink> 
+  
+      </Navbar>
+  
+    
+   
+    
+    
   );
 };
 
