@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch, Link, NavLink, withRouter} from 'react-router-dom';
 import ListingInput from './ListingInput'
 import Listing from './Listing'
+import {Image} from 'cloudinary-react'
 
 const PropertyShowPage = ({match, properties}) =>{
 
@@ -22,6 +23,7 @@ const PropertyShowPage = ({match, properties}) =>{
     return(
 
         <div>
+          <Image cloudName = "xue" publicId = {property.photo_src}></Image>
           <h1>{property.address} - {property.state} - {property.zipcode}</h1>
           <NavLink to = {`${match.url}/listings/new`} >Create a new listing</NavLink>
           <p>{property.description}</p>

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {createProperty} from '../actions/fetchProperties';
 import {withRouter} from 'react-router-dom'
 import { Form, Col ,Button} from 'react-bootstrap';
+import {Image} from 'cloudinary-react'
 
 class PropertyInput extends Component {
     constructor(){
@@ -23,7 +24,6 @@ class PropertyInput extends Component {
 
     
     handleSubmit = (e) =>{
-        console.log(this.state)
         let history = this.props.history
         e.preventDefault()
         let propertyObj = {...this.state, user_id: this.props.user.user.id}
@@ -31,10 +31,35 @@ class PropertyInput extends Component {
     }
 
     handleChange = (e)=>{
-        console.log(e.target.name, e.target.value)
+    
         const {name, value} = e.target
         this.setState({
             [name]: value
+        })
+
+    }
+    
+   
+
+    updateImageFormData = (e) =>{
+    
+        // this.setState({photosrc: e.target.files[0]})
+
+        const formData = new FormData()
+        formData.append("file", e.target.files[0])
+        formData.append("upload_preset", "zqlor28z")
+
+        let configObj = {
+            method: "POST",
+            body:  formData
+        }
+
+        fetch("https://api.cloudinary.com/v1_1/xue/image/upload", configObj)
+        .then(resp => resp.json())
+        .then(json=>{
+            this.setState({
+                photosrc: json.url
+            })
         })
 
     }
@@ -74,7 +99,7 @@ class PropertyInput extends Component {
             
 
               <Form.Group>
-                <Form.File id="UploadImage" label="Upload images" value = {this.state.photosrc.value} onChange = {this.handleChange}  />
+                <Form.File id="UploadImage" name = "file" label="Upload images" onChange = {this.updateImageFormData}  />
                </Form.Group>
 
                 

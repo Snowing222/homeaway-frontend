@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/fetchUser';
 import {Redirect} from 'react-router-dom';
-import {Form, Button} from 'react-bootstrap';
-// import '../css/form.css'
+
+import '../css/form.css'
 
 
 
@@ -41,23 +41,40 @@ class LogIn extends Component {
             return <Redirect to='/myprofile'/>;
          }else{
             return (
-                  <Form onSubmit = {this.handleLoginSubmit} className = "authentica">
-                    <Form.Group controId = "loginEmail">
-                      <Form.Label>Email:</Form.Label>
-                      <Form.Control type = "email" name = "email" placeholder = "Enter email" value = {this.state.email} onChange = {this.handleChange}/>
-                    </Form.Group>
+             
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-10 col-xl-9 mx-auto">
+                      <div className="card card-signin flex-row my-5">
+                        <div className="card-img-left d-none d-md-flex">
+                        
+                        </div>
+                        <div className="card-body">
+              <h3 className="card-title text-center">Welcome back!</h3>
+              <form className="form-signin" onSubmit = {this.handleLoginSubmit} >
+                <div className="form-label-group">
+                  <input type="email" id="inputEmail" name = "email" className="form-control" placeholder="Email address" value = {this.state.email} onChange = {this.handleChange} required autofocus />
+                  <label for="inputEmail">Email address</label>
+                </div>
+
+                <div className="form-label-group">
+                  <input type="password" id="inputPassword" name ="password" className="form-control" placeholder="Password"  value = {this.state.password} onChange = {this.handleChange}required />
+                  <label for="inputPassword">Password</label>
+                </div>
+
+                <div className="form-label-group">
+                <button className="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log In</button>
+                </div>
+              </form>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-                    <Form.Group controId = "loginEmail">
-                      <Form.Label>Password:</Form.Label>
-                      <Form.Control type = "password" name = "password" placeholder = "password" value = {this.state.password} onChange = {this.handleChange}/>
-                    </Form.Group>
-                     
-                      <Button type = "submit" variant = 'primary'>Log In</Button>
-                   
 
-                     
-                  </Form>
+
               )
          }
         

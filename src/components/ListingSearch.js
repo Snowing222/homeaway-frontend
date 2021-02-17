@@ -35,21 +35,21 @@ class ListingSearch extends Component {
                 <Form inline onSubmit = {this.handleSubmit}>    
                 <Col md = {4}>
                    <Form.Group >
-                    <Form.Label>Travel for:{' '} </Form.Label>
+                    <Form.Label style = {{padding: "5px"}}>Travel for: </Form.Label>
                     <Form.Control type = "text" name ="avail_period" value = {this.state.avail_period} onChange = {this.handleChange} />{' '}Days
                     </Form.Group>
                 </Col>
                    
                 <Col md = {3}>
                    <Form.Group >
-                    <Form.Label>From:</Form.Label>
+                    <Form.Label style = {{padding: "5px"}}>From:</Form.Label>
                     <Form.Control type = "date" name = "avail_date_begin" value = {this.state.avail_date_begin} onChange = {this.handleChange} />
                     </Form.Group>
                 </Col>
                    
                 <Col md = {3}>
                     <Form.Group >
-                    <Form.Label>To:</Form.Label>
+                    <Form.Label style = {{padding: "5px"}}>To:</Form.Label>
                     <Form.Control type = "date" name = "avail_date_end" value = {this.state.avail_date_en} onChange = {this.handleChange} />
                     </Form.Group>
                 </Col>  

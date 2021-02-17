@@ -35,12 +35,11 @@ class MyProfileContainer extends Component {
                   
                 
                 </Switch>
-              </Col>
-
-                
+              </Col>   
             
               </Row>     
             </Container>
+            
          
     
             
