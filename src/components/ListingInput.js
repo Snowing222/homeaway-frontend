@@ -42,7 +42,8 @@ class ListingInput extends Component {
         return (
             <div> 
                <h2>CREAT A NEW LISTING</h2>
-               <Form onSubmit = {this.handleSubmit}>
+               <div style = {{width: "60%", paddingLeft: "100px"}}>
+               <Form  onSubmit = {this.handleSubmit}>
                    <Form.Group>
                    <Form.Label> Title: </Form.Label>
                    <Form.Control name = "title" value = {this.state.title} onChange = {this.handleChange} placeholder = "An eye catching title" />
@@ -100,6 +101,7 @@ class ListingInput extends Component {
                    
 
                </Form>
+               </div>
             </div>
         );
     }

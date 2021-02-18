@@ -1,18 +1,21 @@
-import React from 'react'
-import {NavLink} from 'react-router-dom'
+import React from 'react';
+import {CardDeck} from 'react-bootstrap';
+import ListCard from './ListCard'
 
-const Listings = ({listings}) => {
-
+const Listings = ({listings, property}) => {
    
         return(
-            <div style = {{margin: "30px"}}>
-                {listings.map(listing =><div key = {listing.id}> <NavLink key = {listing.id} to = {`/listings/${listing.id}`}>{listing.title}</NavLink></div>)}            
-             </div>
-            
+            <>
+                 {listings.map(listing => <ListCard listing = {listing} property = {property} />)}            
+            </> 
+
+    
         )
  
     
 }
+
+
 
 
 export default Listings

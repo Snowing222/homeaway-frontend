@@ -1,10 +1,10 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import PropertyCard from './PropertyCard'
 
 const PropertiesList = ({properties}) =>{
     return(
         <div>
-            {properties.map(property =><div key = {property.id}> <NavLink key = {property.id} to = {`/myprofile/properties/${property.id}`}>{property.address}</NavLink></div>)}       
+            {properties.map(property =><PropertyCard key = {property.id} property = {property} /> )}       
          </div>
         
     )

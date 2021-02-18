@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import Listings from '../components/Listings';
-
+import {CardDeck} from 'react-bootstrap'
 
 const UserListingsContainer = ({user}) => {
 
     return(
       
-        <div>
-          {user.properties.map(p => <Listings listings = {p.listings}/>) }   
-        </div>
+      <CardDeck style = {{padding: "30px"}}>
+          {user.properties.map(property => <Listings listings = {property.listings} property = {property}/>) }   
+        </CardDeck>
     )
 }
 

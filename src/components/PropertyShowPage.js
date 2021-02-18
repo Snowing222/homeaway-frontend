@@ -13,7 +13,7 @@ const PropertyShowPage = ({match, properties}) =>{
     if(property && property.listings.length > 0){
       activeListings = 
         <ul>
-          {property.listings.map(listing => (<Link to = {`${match.url}/listings/${listing.id}`}>{listing.title}</Link>))}
+          {property.listings.map(listing => (<Link to = {`${match.url}/listings/${listing.id}`} style = {{display: "block"}}>{listing.title}</Link>))}
 
         </ul>
     }else{
@@ -24,22 +24,27 @@ const PropertyShowPage = ({match, properties}) =>{
 
         <div>
           <Image cloudName = "xue" publicId = {property.photo_src}></Image>
+
+          <div className = "alignImg">
           <h1>{property.address} - {property.state} - {property.zipcode}</h1>
-          <NavLink to = {`${match.url}/listings/new`} >Create a new listing</NavLink>
           <p>{property.description}</p>
           <p>{property.bedroom_number} bedrooms - {property.bathroom_number} bathrooms</p>
           <p>host up to {property.guest_number} guest</p>
-          <p>All active listings</p>
+          <hr />
+          <h4>All active listings</h4>
            {activeListings}
-
           
-          <Switch>
+          <h4> <NavLink style = {{fontWeight: "normal", color:"black"}}to = {`${match.url}/listings/new`} > + Create a new listing</NavLink></h4>
+          {/* <Route path = {`${match.path}/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} /> */}
+          </div>
+          
+          {/* <Switch>
           <Route path  = {`${match.path}/listings/new`} >
                <ListingInput />
            </Route>
 
-           <Route path = {`${match.path}/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} />
-          </Switch>
+           
+          </Switch>  */}
 
            
         </div>

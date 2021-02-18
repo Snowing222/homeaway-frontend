@@ -5,9 +5,9 @@ import Navbar from 'react-bootstrap/NavBar'
 const MyNotLoggedInNavBar = () => {
   return (
 
-         <Navbar bg="light" variant="light" sticky="top">
+         <Navbar bg="light" variant="light" sticky="top" className = "nav">
    
-    <Navbar.Brand href = '/'> HomeAway </Navbar.Brand>
+        <Navbar.Brand href = '/'> HomeAway </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
         <NavLink className = 'nav-link' to="/signup">Becomes a host</NavLink>
         <NavLink className = 'nav-link' to="/login">Log In</NavLink> 

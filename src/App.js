@@ -14,7 +14,6 @@ import {fetchLoggedInUser} from './actions/fetchUser'
 import {logOutUser} from './actions/userAction'
 import  Listing  from './components/Listing'
 
-import {Container} from 'react-bootstrap'
 
 
 
@@ -33,8 +32,11 @@ logOut = ()=>{
 
   render() {
     return (
-      <Container>   
+      <div className = "mainContainer"> 
+    
       {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
+   
+      
   
 
       <div style = {{marginTop: '20px'}}>
@@ -51,7 +53,7 @@ logOut = ()=>{
      </Switch>
       </div>
       
-   </Container>
+      </div>
 
      
     );

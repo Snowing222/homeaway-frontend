@@ -8,14 +8,14 @@ const MyLoggedInNavBar = ({user,logOut}) => {
 
   return (
    
-  <Container>
-    <Navbar bg="light" variant="light" sticky="top">
+
+    <Navbar bg="light" variant="light" sticky="top" className = "nav">
       <Navbar.Brand href = '/'> HomeAway </Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
       {/* <NavLink className = 'nav-link' to="/myprofile">My Profile</NavLink> */}
 
       <Navbar.Text>
-      <NavLink className = 'nav-link' to="/myprofile">Sign in as: {user.name}</NavLink>
+      <NavLink className = 'nav-link' to="/myprofile/properties">Sign in as: {user.name}</NavLink>
       </Navbar.Text>
    
       <Button  className="justify-content-end"  size="sm" variant="outline-info" onClick = {()=>{
@@ -24,11 +24,7 @@ const MyLoggedInNavBar = ({user,logOut}) => {
       }}>Log Out</Button>
          </Navbar.Collapse>
     
-  
-
     </Navbar>
-  </Container>
-     
 
     
   );

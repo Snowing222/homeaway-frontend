@@ -4,33 +4,33 @@ import PropertiesList from '../components/PropertiesList'
 import PropertyInput from '../components/PropertyInput';
 import PropertyShowPage from '../components/PropertyShowPage'
 import {Container, Col, Row} from 'react-bootstrap'
+import {CardDeck, Card} from 'react-bootstrap';
+import PropertyCard from '../components/PropertyCard'
 
 
 const PropertiesContainer =({match, user})=> {
 
         return (
-
+<>
             
-             <Container>
-                <Row>
-                  <Col md = {3}>
-                    <PropertiesList properties = {user.properties} userId = {user.id}/>
-                    <NavLink to = {`${match.url}/new`}>List a new property</NavLink> 
-                  </Col>
+             <CardDeck>
+                    
+                   {user.properties.map(property =><PropertyCard key = {property.id} match = {match} property = {property} /> )}       
+                    {/* <PropertiesList properties = {user.properties} userId = {user.id}/> */}
+                    <Card style = {{textAlign: "center"}}>
+               
+                    <NavLink style = {{paddingTop: "180px"}} to = {`${match.url}/new`}> + List a new property</NavLink> 
+                    </Card>
+                    
                  
-                 <Col md = {9}>
-                 <Switch>
+          
+                    </CardDeck>
+                    
+                    {/* <Switch>
                   <Route path = {`${match.path}/new`} component = {PropertyInput} />
                   <Route path = {`${match.path}/:propertyId`} render = {(routerProps) => <PropertyShowPage {...routerProps} properties = {user.properties}/> } />
-                 </Switch>
-                 </Col>
-
-                </Row>
-               
-                
-                    
-             </Container>
-       
+                 </Switch> */}
+ </>      
             
 
         )
