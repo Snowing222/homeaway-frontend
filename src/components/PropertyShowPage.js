@@ -1,26 +1,22 @@
 import React from 'react';
-import {Route, Switch, Link, NavLink, withRouter} from 'react-router-dom';
-import ListingInput from './ListingInput'
-import Listing from './Listing'
+import {Link, NavLink} from 'react-router-dom';
 import {Image} from 'cloudinary-react'
+import {Button} from 'react-bootstrap'
+import {deleteProperty} from '../actions/fetchProperties'
+import {connect} from 'react-redux'
 
-const PropertyShowPage = ({match, properties}) =>{
+
+const PropertyShowPage = ({match, properties, history, user, deleteProperty}) =>{
 
     let property = properties.find(property => property.id === parseInt(match.params.propertyId))
-    console.log(property.listings)
-    let activeListings 
 
-    if(property && property.listings.length > 0){
-      activeListings = 
-        <ul>
-          {property.listings.map(listing => (<Link to = {`${match.url}/listings/${listing.id}`} style = {{display: "block"}}>{listing.title}</Link>))}
+    const handleOnClick = ()=>{
+      deleteProperty(property.id, history)
+      }
 
-        </ul>
-    }else{
-        activeListings = <p> No active listing</p>
-    }
-
-    return(
+    if(property){
+      return(
+      
 
         <div>
           <Image cloudName = "xue" publicId = {property.photo_src}></Image>
@@ -32,24 +28,23 @@ const PropertyShowPage = ({match, properties}) =>{
           <p>host up to {property.guest_number} guest</p>
           <hr />
           <h4>All active listings</h4>
-           {activeListings}
+           { property.listings.length > 0 ? <ul>{property.listings.map(listing => (<Link to = {`${match.url}/listings/${listing.id}`} key = {listing.id} style = {{display: "block"}}>{listing.title}</Link>))}</ul> : <p> No active listing</p> }
+    
+  
+           {(user.login && property.user_id === user.user.id) ? <Button variant="danger" onClick={handleOnClick}> Delete </Button> : null}
+
+           <hr />
           
           <h4> <NavLink style = {{fontWeight: "normal", color:"black"}}to = {`${match.url}/listings/new`} > + Create a new listing</NavLink></h4>
-          {/* <Route path = {`${match.path}/listings/:listingId`} render = {routerProps => <Listing {...routerProps} />} /> */}
+         
           </div>
-          
-          {/* <Switch>
-          <Route path  = {`${match.path}/listings/new`} >
-               <ListingInput />
-           </Route>
-
-           
-          </Switch>  */}
-
            
         </div>
     )
+    }else{
+      return null
+    }
 
 }
 
-export default withRouter(PropertyShowPage)
+export default connect(null, {deleteProperty})(PropertyShowPage)

@@ -1,12 +1,11 @@
 import React from 'react';
-import {CardDeck} from 'react-bootstrap';
 import ListCard from './ListCard'
 
 const Listings = ({listings, property}) => {
    
         return(
             <>
-                 {listings.map(listing => <ListCard listing = {listing} property = {property} />)}            
+                 {listings.map(listing => <ListCard key = {listing.id} listing = {listing} property = {property} />)}            
             </> 
 
     
@@ -14,8 +13,6 @@ const Listings = ({listings, property}) => {
  
     
 }
-
-
 
 
 export default Listings

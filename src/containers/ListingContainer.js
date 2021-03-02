@@ -12,11 +12,10 @@ class ListingContainer extends Component {
        return(
            <div>
              <ListingSearch />
+             
              <CardDeck style = {{padding: "30px"}}>
                 <Listings listings = {this.props.listings}/>
              </CardDeck>
-           
-
            </div>
            
        )

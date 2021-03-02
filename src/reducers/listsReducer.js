@@ -5,8 +5,12 @@ export default function listingReducer(state=[], action) {
         case 'SET_LISTINGS':
             return action.payload
         case 'ADD_LISTING':
-            console.log([...state, action.payload])
             return [...state, action.payload]
+        case 'DELETE_LISTING':
+            return state.filter(listing => listing.id !== action.payload.listing_id)
+        case 'DELETE_PROPERTY':
+            console.log(action)
+            return state.filter(listing => listing.property_id !== action.payload.property_id)
         default:
             return state
     }

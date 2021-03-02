@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {createUser} from '../actions/fetchUser';
 import {connect} from 'react-redux';
-import {Form, Button} from 'react-bootstrap'
 import '../css/form.css'
 
 class SignUp extends Component {
@@ -38,24 +37,7 @@ class SignUp extends Component {
 
     render() {
         return(
-        //     <div>
-        //     <Form onSubmit = {this.handleSignUpSubmit}>
-        //       <Form.Group controlId = "SignUpName">
-        //         <Form.Label>name: </Form.Label>
-        //         <Form.Control type = "text" name = "name" value = {this.state.name} onChange = {this.handleChange} placeholder = "Elsa Chen" />
-        //       </Form.Group>
-        //       <Form.Group controlId = "SignUpEmail">
-        //       <Form.Label>email: </Form.Label>
-        //       <Form.Control type = "email" name = "email" value = {this.state.email} onChange = {this.handleChange} placeholder = "elsa@gmail.com" />
-        //       </Form.Group>
-        //       <Form.Group>
-        //       <Form.Label>Password: </Form.Label>
-        //       <Form.Control type = "password" name = "password" value = {this.state.password} onChange = {this.handleChange} placeholder = "Please enter your password" />
-        //       </Form.Group>
-        //       <Button type = "submit"  variant = 'primary'> Submit</Button>
-        //     </Form>
-        // </div>
-
+     
          <div className="container">
     <div className="row">
       <div className="col-lg-10 col-xl-9 mx-auto">

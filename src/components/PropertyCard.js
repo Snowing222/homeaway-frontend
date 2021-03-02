@@ -1,9 +1,10 @@
 import {NavLink} from 'react-router-dom';
 import {Card} from 'react-bootstrap'
 
-const PropertyCard = ({property, match}) =>{
+const PropertyCard = ({property}) =>{
     return(
-        <Card  key = {property.id} width = "297.75px" >
+     
+             <Card  key = {property.id} className="col-md-3">
         <Card.Img variant="top" src={property.photo_src} height = "215px"  />
         <Card.Body >
           <Card.Title style = {{color:"black"}}>{property.address}</Card.Title>
@@ -14,6 +15,8 @@ const PropertyCard = ({property, match}) =>{
         </Card.Body>
         
         </Card>
+   
+       
         
     )
 }

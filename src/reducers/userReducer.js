@@ -1,7 +1,6 @@
 import produce from "immer"
 
 export default function userReducer(state={user:{}, requesting: false, login:false}, action) {
-    console.log(action)
     switch(action.type){
         case 'LOG_IN_USER':
             return {...state, user: action.payload, login: true}
@@ -22,8 +21,27 @@ export default function userReducer(state={user:{}, requesting: false, login:fal
                 if (index !== -1) draftState.user.properties[index].listings.push(action.payload)
                 draftState.requesting = false
             })
+        case 'DELETE_LISTING':
+            return produce(state, draftState => {
+                const propertyIndex = draftState.user.properties.findIndex(p=> p.id === action.payload.property_id)
+                if (propertyIndex !== -1) {
+                    const property = draftState.user.properties[propertyIndex]
+                    const listingIndex = property.listings.findIndex(l=> l.id === action.payload.listing_id)
+                    property.listings.splice(listingIndex, 1)
+                draftState.requesting = false}
+            })
+        case 'DELETE_PROPERTY':
+            return produce(state, draftState =>{
+                const propertyIndex = draftState.user.properties.findIndex(p=>p.id === action.payload.property_id)
+                if (propertyIndex !== -1){
+                    draftState.user.properties.splice(propertyIndex, 1)
+                    draftState.requesting = false
+                }
+            })
+
         default:
             return state
     }
     
 }
+

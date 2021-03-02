@@ -10,6 +10,10 @@ const UserListingsContainer = ({user}) => {
       <CardDeck style = {{padding: "30px"}}>
           {user.properties.map(property => <Listings listings = {property.listings} property = {property}/>) }   
         </CardDeck>
+ 
+        
+
+      
     )
 }
 

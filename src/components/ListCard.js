@@ -5,7 +5,8 @@ const ListCard = ({listing, property}) =>{
     let listingProperty = property || listing.property
 
     return(
-        <Card  key = {listing.id} style = {{width: "297.75px"}}>
+      
+        <Card  key = {listing.id} className="col-md-3" >
         <Card.Img variant="top" src={listingProperty.photo_src} height = "215px" />
         <Card.Body >
           <Card.Title style = {{color:"black"}}>{listing.title}</Card.Title>
@@ -18,6 +19,8 @@ const ListCard = ({listing, property}) =>{
     
         </Card>
         
+
+       
     )
 }
 

@@ -1,33 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Image, Button} from 'react-bootstrap'
-
 import '../css/listing.css'
+import { deleteListing } from '../actions/fetchListings'
 
-
-const Listing = ({match, listings}) => {
+const Listing = ({match, listings, history, user, deleteListing}) => {
 
     let listing = listings.find(listing => listing.id === parseInt(match.params.listingId))
-
    
-    let rent
-    let trade
-    let strict
-
-    if (listing && listing.rent_mode){
-        rent = <p>Rent for  ${listing.price} </p>
-    }
-
-    if (listing && listing.trade_mode){
-        trade = <p>Accept Trade</p>
-    }else{
-        trade = <p> Not Accept Trade</p>
-    }
-
-    if(listing && listing.strict_mode){
-        strict = <p>negotiable</p> 
-    }else{
-        strict = <p>Not negotiable</p>
+    const handleOnClick = ()=>{
+    deleteListing(listing.id, history)
     }
     
     if(listing){return (
@@ -42,11 +24,15 @@ const Listing = ({match, listings}) => {
            <p>{listing.property.bedroom_number} bedrooms - {listing.property.bathroom_number} bathrooms - Host up to {listing.property.guest_number} guests</p>
            <p>Address: {listing.property.address} - State: {listing.property.state} - Zipcode :{listing.property.zipcode}</p>
            <p>Available from {listing.avail_date_begin} to {listing.avail_date_end} for {listing.avail_period} days</p>
-           {rent}
-           {trade}
-           {strict}
-           
+           {listing.rent_mode && <p>Rent for  ${listing.price} per day </p>}
+           {listing.trade_mode? "" : "Not" } accept trade
+           {listing.strict_mode? "" : "Not"} negotiable
+           <br />
+           <br />
+           {(user.login && listing.user.id === user.user.id) ? <Button variant="danger" onClick={handleOnClick}> Delete </Button> : null}
 
+           
+          
            </div>
            
        </div>
@@ -62,4 +48,4 @@ const Listing = ({match, listings}) => {
     
 }
 
-export default connect(state=>({listings: state.listings}))(Listing)
+export default connect(state=>({listings: state.listings, user: state.user}),{deleteListing})(Listing)

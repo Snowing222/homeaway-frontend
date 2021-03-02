@@ -2,7 +2,7 @@ export function fetchListings(query=""){
     return dispatch => {
         return fetch(`http://localhost:3001/api/v1/listings${query}`)
         .then(resp => resp.json())
-        .then( data => {console.log(typeof(data))
+        .then( data => {
             dispatch ({type: "SET_LISTINGS", payload: data})
         })
            
@@ -36,4 +36,25 @@ export function createListing(listingObj, history){
     }
 }
 
+export function deleteListing(listingId, history){
+ 
+    return dispatch => {
+      
+        return fetch(`http://localhost:3001/api/v1/listings/${listingId}`, { method: 'DELETE' })
+        .then(resp=>resp.json())
+        .then(data=> {
+            console.log(data)
+            if(data.errors){
+                alert(data.errors)
+            }else{
+                let payload = {listing_id: data.id, property_id:data.property_id}
+                dispatch({type:'DELETE_LISTING', payload: payload})
+                history.push("/myprofile/listings")
+            }
+        })
+    }
+    
+    
+
+}
 

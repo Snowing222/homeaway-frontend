@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useHistory} from 'react-router-dom'
-import {Navbar, Button, Container} from 'react-bootstrap'
+import {Navbar, Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const MyLoggedInNavBar = ({user,logOut}) => {

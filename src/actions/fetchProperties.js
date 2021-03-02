@@ -27,3 +27,26 @@ return dispatch => {
 
     }
 }
+
+
+
+
+export function deleteProperty(propertyId, history){
+
+
+    return dispatch => {
+        return fetch(`http://localhost:3001/api/v1/properties/${propertyId}`, { method: 'DELETE' })
+        .then(resp=>resp.json())
+        .then(data=>{
+            if(data.errors){
+                alert(data.errors)
+            }else{
+                let payload = {property_id: data.id}
+                dispatch({type:'DELETE_PROPERTY', payload: payload})
+                history.push("/myprofile/properties")
+            }
+        })
+     
+
+    }
+}

@@ -3,16 +3,17 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import MyNotLoggedInNavBar from './components/MyNotLoggedInNavBar';
-import MyLoggedInNavBar from './components/MyLoggedInNavBar';
-import ListingContainer from './containers/ListingContainer';
-import UserContainer from './containers/UserContainer';
 import {connect} from 'react-redux'
+
 import {fetchListings} from './actions/fetchListings'
 import MyProfileContainer from './containers/MyProfileContainer'
 import {fetchLoggedInUser} from './actions/fetchUser'
 import {logOutUser} from './actions/userAction'
-import  Listing  from './components/Listing'
+import Listing  from './components/Listing'
+import MyNotLoggedInNavBar from './components/MyNotLoggedInNavBar';
+import MyLoggedInNavBar from './components/MyLoggedInNavBar';
+import ListingContainer from './containers/ListingContainer';
+import UserContainer from './containers/UserContainer';
 
 
 
@@ -35,9 +36,6 @@ logOut = ()=>{
       <div className = "mainContainer"> 
     
       {this.props.login? <MyLoggedInNavBar logOut = {this.logOut} /> : <MyNotLoggedInNavBar />}
-   
-      
-  
 
       <div style = {{marginTop: '20px'}}>
       <Switch>
@@ -47,8 +45,6 @@ logOut = ()=>{
        <Route exact path="/signup" render  = {(routerProps) => <UserContainer {...routerProps} />}/>
        <Route exact path="/login" component= {UserContainer} />
        <Route path="/myprofile" render  = {() =>( (this.props.login) ? (<MyProfileContainer/>) : (<ListingContainer />))}/>
-       {/* <Route exact path = '/myprofile' render = {()=> <MyProfileContainer />} /> */}
-
 
      </Switch>
       </div>
