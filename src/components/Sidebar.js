@@ -1,28 +1,33 @@
-import {Nav} from 'react-bootstrap'
-import '../css/Dashboard.css'
-import {NavLink} from 'react-router-dom'
+import { Nav } from "react-bootstrap";
+import "../css/Dashboard.css";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-    return(
-        <>
-    
-        <Nav className="col-md-12 d-none d-md-block bg-light sidebar"
-        activeKey="/myprofile/properties">
-
-
-            <div className="sidebar-sticky"></div>
+  return (
+    <>
+      <Nav className="col-md-12 d-none d-md-block bg-light sidebar">
+        <div className="sidebar-sticky"></div>
         <Nav.Item>
-            <NavLink className = 'nav-link' activeClassName="selected" to="/myprofile/properties" >Manage Properties</NavLink>
+          <NavLink
+            className="nav-link"
+            activeClassName="selected"
+            to="/myprofile/properties"
+          >
+            Manage Properties
+          </NavLink>
         </Nav.Item>
         <Nav.Item>
-            <NavLink className = 'nav-link' activeClassName="selected" to="/myprofile/listings">All my listings</NavLink>
+          <NavLink
+            className="nav-link"
+            activeClassName="selected"
+            to="/myprofile/listings"
+          >
+            All my listings
+          </NavLink>
         </Nav.Item>
-        </Nav>
-      
+      </Nav>
     </>
-
-    )
-
-}
+  );
+};
 
 export default Sidebar;
