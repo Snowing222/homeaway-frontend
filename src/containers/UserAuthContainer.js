@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import SignUp from "../components/SignUp";
 import LogIn from "../components/LogIn";
 import { connect } from "react-redux";
-import MyProfileContainer from "./MyProfileContainer";
+import {Redirect} from 'react-router-dom'
 
-class UserContainer extends Component {
+class UserAuthContainer extends Component {
   renderProperContent = () => {
     let path = this.props.match.path;
     if (this.props.loggedIn) {
-      return <MyProfileContainer />;
+      return <Redirect to = "/myprofile" />;
     } else if (path === "/signup") {
       return <SignUp history={this.props.history} />;
     } else {
@@ -21,4 +21,4 @@ class UserContainer extends Component {
   }
 }
 
-export default connect((state) => ({ loggedIn: state.user.login }))(UserContainer);
+export default connect((state) => ({ loggedIn: state.user.login }))(UserAuthContainer);

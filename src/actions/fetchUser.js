@@ -40,7 +40,7 @@ export function loginUser(userObj, history) {
         if (data.errors) {
           alert(data.errors);
         } else {
-          console.log(data);
+        
           localStorage.setItem("token", data.jwt);
           dispatch({ type: "LOG_IN_USER", payload: data.user });
           history.push("/myprofile");

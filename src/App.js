@@ -9,8 +9,9 @@ import { logOutUser } from "./actions/userAction";
 import Listing from "./components/Listing";
 import MyNotLoggedInNavBar from "./components/MyNotLoggedInNavBar";
 import MyLoggedInNavBar from "./components/MyLoggedInNavBar";
-import ListingContainer from "./containers/ListingContainer";
-import UserContainer from "./containers/UserContainer";
+import HomepageContainer from "./containers/HomepageContainer";
+import UserAuthContainer from "./containers/UserAuthContainer";
+import PrivateRoute from "./components/PrivateRoute"
 
 class App extends Component {
   componentDidMount() {
@@ -36,7 +37,7 @@ class App extends Component {
         {/* listing container/listing/userauth container/login user profile container */}
         <div style={{ marginTop: "20px" }}>
           <Switch>
-            <Route exact path="/" component={ListingContainer} />
+            <Route exact path="/" component={HomepageContainer} />
             <Route
               path={`/listings/:listingId`}
               render={(routerProps) => <Listing {...routerProps} />}
@@ -44,15 +45,10 @@ class App extends Component {
             <Route
               exact
               path="/signup"
-              render={(routerProps) => <UserContainer {...routerProps} />}
+              render={(routerProps) => <UserAuthContainer {...routerProps} />}
             />
-            <Route exact path="/login" component={UserContainer} />
-            <Route
-              path="/myprofile"
-              render={() =>
-                this.props.login ? <MyProfileContainer /> : <ListingContainer />
-              }
-            />
+            <Route exact path="/login" component={UserAuthContainer} />
+            <PrivateRoute path="/myprofile" login ={this.props.login} component={MyProfileContainer} />
           </Switch>
         </div>
       </div>

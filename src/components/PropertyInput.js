@@ -32,6 +32,8 @@ class PropertyInput extends Component {
     this.setState({
       [name]: value,
     });
+
+    
   };
 
   updateImageFormData = (e) => {

@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-
 import { loginUser } from "../actions/fetchUser";
-
 import "../css/form.css";
 
 class LogIn extends Component {
@@ -34,9 +31,6 @@ class LogIn extends Component {
   };
 
   render() {
-    if (this.props.user.login === "true") {
-      return <Redirect to="/myprofile" />;
-    } else {
       return (
         <div className="container">
           <div className="row">
@@ -92,8 +86,7 @@ class LogIn extends Component {
             </div>
           </div>
         </div>
-      );
-    }
+      );   
   }
 }
 

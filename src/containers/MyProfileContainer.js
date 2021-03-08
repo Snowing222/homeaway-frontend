@@ -41,10 +41,9 @@ class MyProfileContainer extends Component {
               <Route
                 exact
                 path="/myprofile/listings"
-                render={(routerProps) => (
-                  <UserListingsContainer {...routerProps} />
-                )}
+                component = {UserListingsContainer}
               />
+
               <Route
                 path="/myprofile/properties/:propertyId/listings/new"
                 component={ListingInput}
