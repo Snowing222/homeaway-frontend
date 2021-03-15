@@ -6,7 +6,7 @@ const ListCard = ({ listing, property }) => {
 
   return (
     <Card key={listing.id} className="col-md-3">
-      <Card.Img variant="top" src={listingProperty.photo_src} height="215px" />
+      <Card.Img variant="top" src={listingProperty.photo_src} height="215px" /> ""
       <Card.Body>
         <Card.Title style={{ color: "black" }}>{listing.title}</Card.Title>
         <Card.Text style={{ color: "black" }}>

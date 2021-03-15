@@ -13,7 +13,7 @@ return dispatch => {
 
          
 
-        return fetch('http://localhost:3001/api/v1/properties', configObj)
+        return fetch(`${API_ROOT}/api/v1/properties`, configObj)
         .then(resp=>resp.json())
         .then(data => {
            if(data.errors){
@@ -35,7 +35,7 @@ export function deleteProperty(propertyId, history){
 
 
     return dispatch => {
-        return fetch(`http://localhost:3001/api/v1/properties/${propertyId}`, { method: 'DELETE' })
+        return fetch(`${API_ROOT}/api/v1/properties/${propertyId}`, { method: 'DELETE' })
         .then(resp=>resp.json())
         .then(data=>{
             if(data.errors){
