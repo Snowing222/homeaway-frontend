@@ -1,3 +1,5 @@
+import API_ROOT from '../api.Root.js'
+
 export function fetchListings(query=""){
     return dispatch => {
         return fetch(`${API_ROOT}/api/v1/listings${query}`)
