@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Navbar from "react-bootstrap/NavBar";
+import {Navbar} from "react-bootstrap";
 
 const MyNotLoggedInNavBar = () => {
   return (
