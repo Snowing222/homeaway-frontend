@@ -10,7 +10,7 @@ export function createUser(userObj, history) {
       body: JSON.stringify({ user: userObj }),
     };
 
-    return fetch(`https://homeaway-backend.herokuapp.com/api/v1/users`, configObj)
+    return fetch("https://homeaway-backend.herokuapp.com/api/v1/users", configObj)
       .then((resp) => resp.json())
       .then((data) => {
         if (data.errors) {
@@ -35,7 +35,7 @@ export function loginUser(userObj, history) {
       body: JSON.stringify({ user: userObj }),
     };
 
-    return fetch(`https://homeaway-backend.herokuapp.com/api/v1/login`, configObj)
+    return fetch("https://homeaway-backend.herokuapp.com/api/v1/login", configObj)
       .then((resp) => resp.json())
       .then((data) => {
         if (data.errors) {
@@ -55,7 +55,7 @@ export function fetchLoggedInUser() {
     const token = localStorage.token;
 
     if (token) {
-      return fetch(`https://homeaway-backend.herokuapp.com/api/v1/auto_login`, {
+      return fetch("https://homeaway-backend.herokuapp.com/api/v1/auto_login", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

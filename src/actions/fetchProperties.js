@@ -15,7 +15,7 @@ return dispatch => {
 
          
 
-        return fetch(`https://homeaway-backend.herokuapp.com//api/v1/properties`, configObj)
+        return fetch("https://homeaway-backend.herokuapp.com//api/v1/properties", configObj)
         .then(resp=>resp.json())
         .then(data => {
            if(data.errors){

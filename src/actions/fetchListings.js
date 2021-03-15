@@ -20,7 +20,7 @@ export function createListing(listingObj, history){
             },
             body: JSON.stringify({listing: listingObj})}
 
-        return fetch(`https://homeaway-backend.herokuapp.com/api/v1/listings`, configObj)
+        return fetch("https://homeaway-backend.herokuapp.com/api/v1/listings", configObj)
         .then(resp => resp.json())
         .then(data => {
             if(data.errors){
