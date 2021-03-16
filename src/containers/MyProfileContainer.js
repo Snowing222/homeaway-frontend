@@ -16,11 +16,11 @@ class MyProfileContainer extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs={2} id="sidebar-wrapper">
+          <Col ListingInput={2} id="sidebar-wrapper">
             <Sidebar />
           </Col>
 
-          <Col xs={10} id="page-content-wrapper">
+          <Col lg={10} id="page-content-wrapper">
             <Switch>
               <Route
                 exact
