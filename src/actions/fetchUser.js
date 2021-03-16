@@ -61,7 +61,7 @@ export function fetchLoggedInUser() {
           "Content-Type": "application/json",
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
-        },
+        }
       }).then((resp) => resp.json())
         .then((data) => {
           console.log(data);
