@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import PropertiesContainer from "./PropertiesContainer";
 import UserListingsContainer from "./UserListingsContainer";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container, Row, Col } from 'react-bootstrap'
 
 import Sidebar from "../components/Sidebar";
 import PropertyInput from "../components/PropertyInput";
@@ -16,7 +16,7 @@ class MyProfileContainer extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col ListingInput={2} id="sidebar-wrapper">
+          <Col lg={2} id="sidebar-wrapper">
             <Sidebar />
           </Col>
 
