@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { CardDeck } from "react-bootstrap";
 
-import Listings from "../components/Listings";
+
 import ListingSearch from "../components/ListingSearch";
 import ListingContainer from './ListingContainer'
 

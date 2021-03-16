@@ -15,7 +15,7 @@ return dispatch => {
 
          
 
-        return fetch("https://homeaway-backend.herokuapp.com//api/v1/properties", configObj)
+        return fetch("https://homaway.herokuapp.com/api/v1/properties", configObj)
         .then(resp=>resp.json())
         .then(data => {
            if(data.errors){
@@ -37,7 +37,7 @@ export function deleteProperty(propertyId, history){
 
 
     return dispatch => {
-        return fetch(`https://homeaway-backend.herokuapp.com//api/v1/properties/${propertyId}`, { method: 'DELETE' })
+        return fetch(`https://homaway.herokuapp.com/api/v1/properties/${propertyId}`, { method: 'DELETE' })
         .then(resp=>resp.json())
         .then(data=>{
             if(data.errors){

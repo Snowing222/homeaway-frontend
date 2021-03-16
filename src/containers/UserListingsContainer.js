@@ -7,7 +7,7 @@ const UserListingsContainer = ({ user }) => {
   return (
     <CardDeck style={{ padding: "30px" }}>
       {user.properties.map((property) => (
-        <Listings listings={property.listings} property={property} />
+        <Listings key = {property.id} listings={property.listings} property={property} />
       ))}
     </CardDeck>
   );
