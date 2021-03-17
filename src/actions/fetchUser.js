@@ -36,7 +36,8 @@ export function loginUser(userObj, history) {
     };
 
     return fetch("https://homeaway-backend.herokuapp.com/api/v1/login", configObj)
-      .then((resp) => resp.json())
+      .then((resp) => {console.log(resp)
+      return resp.json()} )
       .then((data) => {
         if (data.errors) {
           alert(data.errors);
