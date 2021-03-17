@@ -54,6 +54,7 @@ export function loginUser(userObj, history) {
 export function fetchLoggedInUser() {
   return (dispatch) => {
     const token = localStorage.token;
+    console.log(token)
 
     if (token) {
       return fetch("https://homeaway-backend.herokuapp.com/api/v1/auto_login", {
