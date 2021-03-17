@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 const MyLoggedInNavBar = ({ user, logOut }) => {
   const history = useHistory();
+  
 
   return (
     <Navbar bg="light" variant="light" sticky="top" className="nav">
@@ -14,7 +15,7 @@ const MyLoggedInNavBar = ({ user, logOut }) => {
 
         <Navbar.Text>
           <NavLink className="nav-link" to="/myprofile/properties">
-            Sign in as: {user.name}
+             Sign in as: {user.name}
           </NavLink>
         </Navbar.Text>
 

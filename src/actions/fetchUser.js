@@ -67,8 +67,8 @@ export function fetchLoggedInUser() {
         return resp.json()})
         .then((data) => {
           console.log(data);
-          if (data.error) {
-            alert(data.error);
+          if (data.errors) {
+            alert(data.errors);
             localStorage.removeItem("token");
           } else {
             dispatch({ type: "LOG_IN_USER", payload: data.user });
