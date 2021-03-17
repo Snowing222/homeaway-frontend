@@ -55,18 +55,21 @@ export function fetchLoggedInUser() {
   return (dispatch) => {
     const token = localStorage.token;
     console.log(token)
+    let configObj = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }
+
 
     if (token) {
-      return fetch("https://homeaway-backend.herokuapp.com/api/v1/auto_login", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        }
-      }).then((resp) => {console.log(resp)
+      return fetch("https://homeaway-backend.herokuapp.com/api/v1/auto_login", configObj)
+      .then((resp) => {console.log(resp)
         return resp.json()})
-        .then((data) => {
+      .then((data) => {
           console.log(data);
           if (data.errors) {
             alert(data.errors);
