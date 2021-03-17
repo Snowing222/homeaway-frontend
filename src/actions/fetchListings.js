@@ -56,7 +56,7 @@
 
 export function fetchListings(query=""){
     return dispatch => {
-        return fetch(`https://homaway.herokuapp.com/api/v1/listings${query}`)
+        return fetch(`https://homeaway-backend.herokuapp.com/api/v1/listings${query}`)
         .then(resp => resp.json())
         .then( data => {
             dispatch ({type: "SET_LISTINGS", payload: data})
@@ -74,7 +74,7 @@ export function createListing(listingObj, history){
             },
             body: JSON.stringify({listing: listingObj})}
 
-        return fetch(`https://homaway.herokuapp.com/api/v1/listings`, configObj)
+        return fetch(`https://homeaway-backend.herokuapp.com/api/v1/listings`, configObj)
         .then(resp => resp.json())
         .then(data => {
             if(data.errors){
@@ -94,7 +94,7 @@ export function deleteListing(listingId, history){
  
     return dispatch => {
       
-        return fetch(`https://homaway.herokuapp.com/api/v1/listings/${listingId}`, { method: 'DELETE' })
+        return fetch(`https://homeaway-backend.herokuapp.com/api/v1/listings/${listingId}`, { method: 'DELETE' })
         .then(resp=>resp.json())
         .then(data=> {
             console.log(data)
