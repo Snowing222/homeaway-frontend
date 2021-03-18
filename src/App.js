@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
+
 import { fetchListings } from "./actions/fetchListings";
 import MyProfileContainer from "./containers/MyProfileContainer";
 import { fetchLoggedInUser } from "./actions/fetchUser";

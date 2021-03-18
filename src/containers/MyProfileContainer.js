@@ -12,11 +12,12 @@ import ListingInput from "../components/ListingInput";
 import Listing from "../components/Listing";
 
 class MyProfileContainer extends Component {
+  debugger
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col lg={2} id="sidebar-wrapper">
+          <Col lg={2} id="sidebar-wrapper"> 
             <Sidebar />
           </Col>
 
