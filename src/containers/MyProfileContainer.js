@@ -15,13 +15,67 @@ class MyProfileContainer extends Component {
 
   render() {
     return (
-      <div>
+      // <div>
      
-          <div id="sidebar-wrapper"> 
-            <Sidebar />
-          </div>
+      //     <div id="sidebar-wrapper"> 
+      //       <Sidebar />
+      //     </div>
 
-          <div id="page-content-wrapper">
+      //     <div id="page-content-wrapper">
+      //     <Switch>
+      //         <Route
+      //           exact
+      //           path="/myprofile/properties/new"
+      //           component={PropertyInput}
+      //         />
+
+      //         <Route
+      //           exact
+      //           path="/myprofile/properties"
+      //           render={(routerProps) => (
+      //             <PropertiesContainer
+      //               {...routerProps}
+      //               user={this.props.user.user}
+      //             />
+      //           )}
+      //         />
+      //         <Route
+      //           exact
+      //           path="/myprofile/listings"
+      //           component = {UserListingsContainer}
+      //         />
+
+      //         <Route
+      //           path="/myprofile/properties/:propertyId/listings/new"
+      //           component={ListingInput}
+      //         />
+      //         <Route
+      //           path="/myprofile/properties/:propertyId/listings/:listingId"
+      //           render={(routerProps) => <Listing {...routerProps} />}
+      //         />
+      //         <Route
+      //           path="/myprofile/properties/:propertyId"
+      //           render={(routerProps) => (
+      //             <PropertyShowPage
+      //               {...routerProps}
+      //               user={this.props.user}
+      //               properties={this.props.user.user.properties}
+      //             />
+      //           )}
+      //         />
+      //       </Switch>
+      //     </div>
+      // </div>
+ 
+
+
+ <Container fluid>
+        <Row>
+          <Col lg={2} id="sidebar-wrapper"> 
+            <Sidebar />
+          </Col>
+
+          <Col lg={10} id="page-content-wrapper">
           <Switch>
               <Route
                 exact
@@ -64,66 +118,14 @@ class MyProfileContainer extends Component {
                 )}
               />
             </Switch>
-          </div>
-      </div>
- 
-
-
-//  <Container fluid>
-//         <Row>
-//           <Col lg={2} id="sidebar-wrapper"> 
-//             <Sidebar />
-//           </Col>
-
-//           <Col lg={10} id="page-content-wrapper">
-//           <Switch>
-//               <Route
-//                 exact
-//                 path="/myprofile/properties/new"
-//                 component={PropertyInput}
-//               />
-
-//               <Route
-//                 exact
-//                 path="/myprofile/properties"
-//                 render={(routerProps) => (
-//                   <PropertiesContainer
-//                     {...routerProps}
-//                     user={this.props.user.user}
-//                   />
-//                 )}
-//               />
-//               <Route
-//                 exact
-//                 path="/myprofile/listings"
-//                 component = {UserListingsContainer}
-//               />
-
-//               <Route
-//                 path="/myprofile/properties/:propertyId/listings/new"
-//                 component={ListingInput}
-//               />
-//               <Route
-//                 path="/myprofile/properties/:propertyId/listings/:listingId"
-//                 render={(routerProps) => <Listing {...routerProps} />}
-//               />
-//               <Route
-//                 path="/myprofile/properties/:propertyId"
-//                 render={(routerProps) => (
-//                   <PropertyShowPage
-//                     {...routerProps}
-//                     user={this.props.user}
-//                     properties={this.props.user.user.properties}
-//                   />
-//                 )}
-//               />
-//             </Switch>
-//           </Col>
-//         </Row>
-//       </Container>
+          </Col>
+        </Row>
+      </Container>
        
     );
   }
 }
 
 export default connect((state) => ({ user: state.user }))(MyProfileContainer);
+
+
