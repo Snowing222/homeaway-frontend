@@ -15,58 +15,58 @@ class MyProfileContainer extends Component {
 
   render() {
     return (
-      <PropertyInput />
-      // <div>
+    
+      <div>
      
-      //     <div id="sidebar-wrapper"> 
-      //       <Sidebar />
-      //     </div>
+          <div id="sidebar-wrapper"> 
+            <Sidebar />
+          </div>
 
-      //     <div id="page-content-wrapper">
-      //     <Switch>
-      //         <Route
-      //           exact
-      //           path="/myprofile/properties/new"
-      //           component={PropertyInput}
-      //         />
+          <div id="page-content-wrapper">
+       
+              <Route
+                exact
+                path="/myprofile/properties/new"
+                component={PropertyInput}
+              />
 
-      //         <Route
-      //           exact
-      //           path="/myprofile/properties"
-      //           render={(routerProps) => (
-      //             <PropertiesContainer
-      //               {...routerProps}
-      //               user={this.props.user.user}
-      //             />
-      //           )}
-      //         />
-      //         <Route
-      //           exact
-      //           path="/myprofile/listings"
-      //           component = {UserListingsContainer}
-      //         />
+              <Route
+                exact
+                path="/myprofile/properties"
+                render={(routerProps) => (
+                  <PropertiesContainer
+                    {...routerProps}
+                    user={this.props.user.user}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/myprofile/listings"
+                component = {UserListingsContainer}
+              />
 
-      //         <Route
-      //           path="/myprofile/properties/:propertyId/listings/new"
-      //           component={ListingInput}
-      //         />
-      //         <Route
-      //           path="/myprofile/properties/:propertyId/listings/:listingId"
-      //           render={(routerProps) => <Listing {...routerProps} />}
-      //         />
-      //         <Route
-      //           path="/myprofile/properties/:propertyId"
-      //           render={(routerProps) => (
-      //             <PropertyShowPage
-      //               {...routerProps}
-      //               user={this.props.user}
-      //               properties={this.props.user.user.properties}
-      //             />
-      //           )}
-      //         />
-      //       </Switch>
-      //     </div>
-      // </div>
+              <Route
+                path="/myprofile/properties/:propertyId/listings/new"
+                component={ListingInput}
+              />
+              <Route
+                path="/myprofile/properties/:propertyId/listings/:listingId"
+                render={(routerProps) => <Listing {...routerProps} />}
+              />
+              <Route
+                path="/myprofile/properties/:propertyId"
+                render={(routerProps) => (
+                  <PropertyShowPage
+                    {...routerProps}
+                    user={this.props.user}
+                    properties={this.props.user.user.properties}
+                  />
+                )}
+              />
+           
+          </div>
+      </div>
  
 
 
