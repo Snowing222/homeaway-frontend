@@ -17,15 +17,15 @@ class MyProfileContainer extends Component {
 
     return (
       
- <Container fluid>
-        <Row>
+//  <Container fluid>
+        /* <Row>
           <Col lg={2} id="sidebar-wrapper"> 
             <Sidebar />
           </Col>
 
-          <Col lg={10} id="page-content-wrapper">
-          <PropertyInput />
-{/*           
+          <Col lg={10} id="page-content-wrapper"> */
+          <PropertyInput />)}
+/*           
           <Switch>
               <Route
                 exact
@@ -68,13 +68,11 @@ class MyProfileContainer extends Component {
                 )}
               />
             </Switch> */}
-          </Col>
+          /* </Col>
         </Row>
-      </Container>
+      </Container> */
        
-    );
-  }
-}
+    
 
 export default connect((state) => ({ user: state.user }))(MyProfileContainer);
 
