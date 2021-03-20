@@ -16,7 +16,7 @@ class MyProfileContainer extends Component {
   render() {
 
     return (
-
+      
  <Container fluid>
         <Row>
           <Col lg={2} id="sidebar-wrapper"> 
@@ -24,6 +24,7 @@ class MyProfileContainer extends Component {
           </Col>
 
           <Col lg={10} id="page-content-wrapper">
+          
           <Switch>
               <Route
                 exact

@@ -49,7 +49,8 @@ class App extends Component {
               render={(routerProps) => <UserAuthContainer {...routerProps} />}
             />
             <Route exact path="/login" component={UserAuthContainer} />
-            <PrivateRoute path="/myprofile" login ={this.props.login} component={MyProfileContainer} />
+            <Route path="/myprofile" login ={this.props.login} component={MyProfileContainer} />
+            {/* <PrivateRoute exact path="/myprofile/properties/new" login ={this.props.login} component={MyProfileContainer} /> */}
   
           </Switch>
         </div>
