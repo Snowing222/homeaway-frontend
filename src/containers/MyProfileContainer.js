@@ -24,7 +24,8 @@ class MyProfileContainer extends Component {
           </Col>
 
           <Col lg={10} id="page-content-wrapper">
-          
+          <PropertyInput />
+{/*           
           <Switch>
               <Route
                 exact
@@ -66,7 +67,7 @@ class MyProfileContainer extends Component {
                   />
                 )}
               />
-            </Switch>
+            </Switch> */}
           </Col>
         </Row>
       </Container>
