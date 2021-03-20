@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-
 import { fetchListings } from "./actions/fetchListings";
 import MyProfileContainer from "./containers/MyProfileContainer";
 import { fetchLoggedInUser } from "./actions/fetchUser";
@@ -12,7 +11,7 @@ import MyNotLoggedInNavBar from "./components/MyNotLoggedInNavBar";
 import MyLoggedInNavBar from "./components/MyLoggedInNavBar";
 import HomepageContainer from "./containers/HomepageContainer";
 import UserAuthContainer from "./containers/UserAuthContainer";
-import PrivateRoute from "./components/PrivateRoute"
+import PrivateRoute from "./components/PrivateRoute";
 
 class App extends Component {
   componentDidMount() {
@@ -49,9 +48,12 @@ class App extends Component {
               render={(routerProps) => <UserAuthContainer {...routerProps} />}
             />
             <Route exact path="/login" component={UserAuthContainer} />
-            <Route path="/myprofile" login ={this.props.login} component={MyProfileContainer} />
+            <PrivateRoute
+              path="/myprofile"
+              login={this.props.login}
+              component={MyProfileContainer}
+            />
             {/* <PrivateRoute exact path="/myprofile/properties/new" login ={this.props.login} component={MyProfileContainer} /> */}
-  
           </Switch>
         </div>
       </div>
