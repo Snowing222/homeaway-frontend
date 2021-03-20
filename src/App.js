@@ -50,6 +50,7 @@ class App extends Component {
             />
             <Route exact path="/login" component={UserAuthContainer} />
             <PrivateRoute path="/myprofile" login ={this.props.login} component={MyProfileContainer} />
+  
           </Switch>
         </div>
       </div>
