@@ -14,6 +14,7 @@ import Listing from "../components/Listing";
 class MyProfileContainer extends Component {
 
   render() {
+
     return (
 
  <Container fluid>
@@ -26,13 +27,13 @@ class MyProfileContainer extends Component {
           <Switch>
               <Route
                 exact
-                path="/myprofile/properties/new"
+                path={`${this.props.match.url}/properties/new`}
                 component={PropertyInput}
               />
 
               <Route
                 exact
-                path="/myprofile/properties"
+                path={`${this.props.match.url}/properties`}
                 render={(routerProps) => (
                   <PropertiesContainer
                     {...routerProps}
@@ -42,20 +43,20 @@ class MyProfileContainer extends Component {
               />
               <Route
                 exact
-                path="/myprofile/listings"
+                path={`${this.props.match.url}/listings`}
                 component = {UserListingsContainer}
               />
 
               <Route
-                path="/myprofile/properties/:propertyId/listings/new"
+                path={`${this.props.match.url}/properties/:propertyId/listings/new`}
                 component={ListingInput}
               />
               <Route
-                path="/myprofile/properties/:propertyId/listings/:listingId"
+                path={`${this.props.match.url}/properties/:propertyId/listings/:listingId`}
                 render={(routerProps) => <Listing {...routerProps} />}
               />
               <Route
-                path="/myprofile/properties/:propertyId"
+                path={`${this.props.match.url}/properties/:propertyId`}
                 render={(routerProps) => (
                   <PropertyShowPage
                     {...routerProps}
