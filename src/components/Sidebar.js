@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
   return (
     <>
-      <Nav className="col-md-12 d-none d-md-block bg-light sidebar">
-        <div className="sidebar-sticky"></div>
+      <Nav>
+      
         <Nav.Item>
           <NavLink
             className="nav-link"
@@ -16,6 +16,7 @@ const Sidebar = () => {
             Manage Properties
           </NavLink>
         </Nav.Item>
+
         <Nav.Item>
           <NavLink
             className="nav-link"

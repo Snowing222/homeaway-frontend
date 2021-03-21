@@ -18,13 +18,23 @@ class MyProfileContainer extends Component {
     return (
       
 //  <Container fluid>
+<div>
+<div id="sidebar">
+  <Sidebar />
+</div>
+<div id="content">
+  <PropertyInput />
+</div>
+</div>
+
         /* <Row>
           <Col lg={2} id="sidebar-wrapper"> 
             <Sidebar />
           </Col>
 
           <Col lg={10} id="page-content-wrapper"> */
-          <PropertyInput />)}
+
+          )}
 /*           
           <Switch>
               <Route
