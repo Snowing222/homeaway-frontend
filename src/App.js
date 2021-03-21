@@ -12,6 +12,9 @@ import MyLoggedInNavBar from "./components/MyLoggedInNavBar";
 import HomepageContainer from "./containers/HomepageContainer";
 import UserAuthContainer from "./containers/UserAuthContainer";
 import PrivateRoute from "./components/PrivateRoute";
+import PropertiesContainer from "./containers/PropertiesContainer";
+import PropertyInput from "./components/PropertyInput";
+
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +29,7 @@ class App extends Component {
   };
 
   render() {
+   
     return (
       <div className="mainContainer">
         {this.props.login ? (
@@ -34,7 +38,7 @@ class App extends Component {
           <MyNotLoggedInNavBar />
         )}
 
-        {/* listing container/listing/userauth container/login user profile container */}
+       
         <div style={{ marginTop: "20px" }}>
           <Switch>
             <Route exact path="/" component={HomepageContainer} />
@@ -53,6 +57,18 @@ class App extends Component {
               login={this.props.login}
               component={MyProfileContainer}
             />
+            {/* <PrivateRoute
+              path="/myprofile"
+              user ={this.props.user}
+              component={MyProfileContainer}
+            /> */}
+            {/* <PrivateRoute exact path = "myprofile/properties/new"  component={PropertyInput}/>
+               <PrivateRoute exact
+              path="/myprofile/properties"
+              user={this.props.user}
+              component={PropertiesContainer}
+            /> */}
+
             {/* <PrivateRoute exact path="/myprofile/properties/new" login ={this.props.login} component={MyProfileContainer} /> */}
           </Switch>
         </div>
@@ -61,7 +77,7 @@ class App extends Component {
   }
 }
 
-export default connect((state) => ({ login: state.user.login }), {
+export default connect((state) => ({ login: state.user.login, user: state.user }), {
   fetchListings,
   fetchLoggedInUser,
   logOutUser,
