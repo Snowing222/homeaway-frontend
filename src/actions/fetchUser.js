@@ -18,7 +18,7 @@ export function createUser(userObj, history) {
         } else {
           localStorage.setItem("token", data.jwt);
           dispatch({ type: "LOG_IN_USER", payload: data.user });
-          history.push("/myprofile");
+          history.push("/myprofile/properties");
         }
       });
   };
@@ -45,7 +45,7 @@ export function loginUser(userObj, history) {
         
           localStorage.setItem("token", data.jwt);
           dispatch({ type: "LOG_IN_USER", payload: data.user });
-          history.push("/myprofile");
+          history.push("/myprofile/properties");
         }
       });
   };

@@ -24,7 +24,7 @@ const Listing = ({ match, listings, history, user, deleteListing }) => {
           <p>{listing.property.description}</p>
           <p>
             Host by: {listing.user.name}{" "}
-            <Button variant="info">Contact Owner</Button>
+            <Button href={`mailto:${listing.user.email}`} variant="info">Contact Owner</Button>
           </p>
           <p>
             {listing.property.bedroom_number} bedrooms -{" "}

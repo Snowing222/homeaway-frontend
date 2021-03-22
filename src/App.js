@@ -12,8 +12,6 @@ import MyLoggedInNavBar from "./components/MyLoggedInNavBar";
 import HomepageContainer from "./containers/HomepageContainer";
 import UserAuthContainer from "./containers/UserAuthContainer";
 import PrivateRoute from "./components/PrivateRoute";
-import PropertiesContainer from "./containers/PropertiesContainer";
-import PropertyInput from "./components/PropertyInput";
 
 
 class App extends Component {
@@ -57,19 +55,6 @@ class App extends Component {
               login={this.props.login}
               component={MyProfileContainer}
             />
-            {/* <PrivateRoute
-              path="/myprofile"
-              user ={this.props.user}
-              component={MyProfileContainer}
-            /> */}
-            {/* <PrivateRoute exact path = "myprofile/properties/new"  component={PropertyInput}/>
-               <PrivateRoute exact
-              path="/myprofile/properties"
-              user={this.props.user}
-              component={PropertiesContainer}
-            /> */}
-
-            {/* <PrivateRoute exact path="/myprofile/properties/new" login ={this.props.login} component={MyProfileContainer} /> */}
           </Switch>
         </div>
       </div>
