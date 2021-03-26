@@ -43,17 +43,17 @@ const Listing = ({ match, listings, history, user, deleteListing }) => {
             {listing.avail_date_end} for {listing.avail_period} days
           </p>
           {listing.rent_mode && <p>Rent for ${listing.price} per day </p>}
-          {listing.trade_mode ? "" : "Not"} accept trade
-          <br />
-          {listing.strict_mode ? "" : "Not"} negotiable
-          <br />
-          <br />
-          {user.login && listing.user.id === user.user.id ? (
+          <p>{listing.trade_mode ? "" : "Not"} accept trade</p>
+         
+          <p>{listing.strict_mode ? "" : "Not"} negotiable</p>
+        
+          
+          <p>{user.login && listing.user.id === user.user.id ? (
             <Button variant="danger" onClick={handleOnClick}>
               {" "}
               Delete{" "}
             </Button>
-          ) : null}
+          ) : null}</p>
         </div>
       </div>
     );
