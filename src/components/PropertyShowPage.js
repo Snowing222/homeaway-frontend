@@ -40,13 +40,14 @@ const PropertyShowPage = ({
           {property.listings.length > 0 ? (
             <ul>
               {property.listings.map((listing) => (
-                <Link
+                <li>
+                 <Link
                   to={`${match.url}/listings/${listing.id}`}
                   key={listing.id}
-                  style={{ display: "block" }}
-                >
+                  style={{ display: "block" }} >
                   {listing.title}
                 </Link>
+                </li> 
               ))}
             </ul>
           ) : (
