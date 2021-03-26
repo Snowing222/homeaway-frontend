@@ -44,6 +44,7 @@ const Listing = ({ match, listings, history, user, deleteListing }) => {
           </p>
           {listing.rent_mode && <p>Rent for ${listing.price} per day </p>}
           {listing.trade_mode ? "" : "Not"} accept trade
+          <br />
           {listing.strict_mode ? "" : "Not"} negotiable
           <br />
           <br />
