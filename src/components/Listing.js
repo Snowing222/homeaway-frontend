@@ -24,7 +24,7 @@ const Listing = ({ match, listings, history, user, deleteListing }) => {
           <p>{listing.property.description}</p>
           <p>
             Host by: {listing.user.name}{" "}
-            {user.login ? (
+            {user.login && listing.user.id !== user.user.id ? (
               <Button href={`mailto:${listing.user.email}`} variant="info">Contact Owner</Button>
             ) : null
             }
